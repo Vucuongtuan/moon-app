@@ -1,0 +1,133 @@
+{
+    "onboading": {
+        "title": "Chào mừng đến với Moon co.",
+        "description": "Địa điểm lý tưởng để mua sắm sản phẩm yêu thích của bạn.",
+        "scurity": "Bằng cách nhấn tiếp tục, bạn đồng ý với các Điều khoản Dịch vụ của chúng tôi và bạn đã đọc Chính sách Quyền riêng tư của chúng tôi",
+        "continue": "Tiếp tục",
+        "next": "Tiếp theo",
+        "skip": "Bỏ qua",
+        "prev": "Quay lại",
+        "loginButton": "Đăng nhập",
+        "signupButton": "Đăng ký",
+        "selectLanguage": "Chọn ngôn ngữ của bạn",
+        "slides": [
+            {
+                "title": "Chào mừng đến\nMoon Co.",
+                "description": "Khám phá thời trang bền vững tạo nên sự khác biệt. Cùng chúng tôi tạo nên tương lai tốt đẹp hơn cho hành tinh."
+            },
+            {
+                "title": "Tìm kiếm\nBộ sưu tập đẹp nhất",
+                "description": "Dễ dàng sở hữu món đồ mơ ước cùng Moon Co. và nhận thêm nhiều ưu đãi hấp dẫn"
+            },
+            {
+                "title": "Bắt đầu\nHành trình thời trang",
+                "description": "Tạo tài khoản để mở khóa các ưu đãi độc quyền và gợi ý cá nhân hóa"
+            }
+        ],
+        "signUp": "Đăng ký",
+        "signIn": "Đăng nhập",
+        "info": {
+            "delivery": {
+                "title": "Giao hàng tận nơi",
+                "description": "Miễn phí giao hàng cho đơn hàng tại Việt Nam"
+            },
+            "return": {
+                "title": "Đổi trả trong 30 ngày",
+                "description": "Đổi hàng tại bất kỳ cửa hàng bán lẻ nào của chúng tôi trong vòng 30 ngày kể từ ngày đặt hàng"
+            },
+            "crafted": {
+                "title": "Sản phẩm được thân thiện với môi trường",
+                "description": "Sản phẩm được sản xuất từ các nguyên liệu thân thiện với môi trường"
+            }
+        },
+        "language": {
+            "title": "Ngôn ngữ",
+            "description": "Chọn ngôn ngữ của bạn"
+        }
+    },
+    "auth": {
+        "titlePrivate": "Bằng cách tiếp tục, bạn đồng ý với",
+        "privacyPolicy": "Chính sách bảo mật",
+        "terms": "Điều khoản",
+        "and": "và",
+        "service": "Dịch vụ",
+        "login": {
+            "title": "Chào mừng trở lại",
+            "subtitle": "Đăng nhập để tiếp tục mua sắm",
+            "email": "Email",
+            "emailPlaceholder": "your.email@example.com",
+            "password": "Mật khẩu",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Quên mật khẩu?",
+            "loginButton": "Đăng nhập",
+            "loggingIn": "Đang đăng nhập...",
+            "orDivider": "hoặc",
+            "continueWithGoogle": "Tiếp tục với Google",
+            "continueWithApple": "Tiếp tục với Apple",
+            "noAccount": "Chưa có tài khoản?",
+            "signUpNow": "Đăng ký ngay"
+        },
+        "register": {
+            "title": "Tạo tài khoản",
+            "subtitle": "Đăng ký để bắt đầu trải nghiệm mua sắm",
+            "fullName": "Họ và tên",
+            "fullNamePlaceholder": "Nguyễn Văn A",
+            "email": "Email",
+            "emailPlaceholder": "your.email@example.com",
+            "password": "Mật khẩu",
+            "passwordPlaceholder": "••••••••",
+            "confirmPassword": "Xác nhận mật khẩu",
+            "confirmPasswordPlaceholder": "••••••••",
+            "passwordRequirements": "Yêu cầu mật khẩu:",
+            "minLength": "Ít nhất 6 ký tự",
+            "uppercase": "Chứa ít nhất 1 chữ hoa",
+            "lowercase": "Chứa ít nhất 1 chữ thường",
+            "number": "Chứa ít nhất 1 số",
+            "termsAgree": "Bằng cách đăng ký, bạn đồng ý với",
+            "termsOfService": "Điều khoản dịch vụ",
+            "privacyPolicy": "Chính sách bảo mật",
+            "ofUs": "của chúng tôi",
+            "registerButton": "Đăng ký",
+            "registering": "Đang đăng ký...",
+            "orDivider": "hoặc",
+            "continueWithGoogle": "Đăng ký với Google",
+            "continueWithApple": "Đăng ký với Apple",
+            "haveAccount": "Đã có tài khoản?",
+            "signInNow": "Đăng nhập"
+        },
+        "forgotPassword": {
+            "backButton": "← Quay lại",
+            "title": "Quên mật khẩu?",
+            "subtitle": "Nhập email của bạn để nhận liên kết đặt lại mật khẩu",
+            "email": "Email",
+            "emailPlaceholder": "your.email@example.com",
+            "infoMessage": "Chúng tôi sẽ gửi một email chứa liên kết để đặt lại mật khẩu của bạn. Vui lòng kiểm tra cả thư mục spam nếu không thấy email.",
+            "submitButton": "Gửi liên kết đặt lại",
+            "sending": "Đang gửi...",
+            "successMessage": "Đã gửi email khôi phục mật khẩu. Vui lòng kiểm tra hộp thư của bạn."
+        },
+        "validation": {
+            "emailRequired": "Email là bắt buộc",
+            "emailInvalid": "Email không hợp lệ",
+            "passwordRequired": "Mật khẩu là bắt buộc",
+            "passwordMinLength": "Mật khẩu phải có ít nhất 6 ký tự",
+            "passwordStrength": "Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số",
+            "confirmPasswordRequired": "Xác nhận mật khẩu là bắt buộc",
+            "confirmPasswordMatch": "Mật khẩu xác nhận không khớp",
+            "fullNameRequired": "Họ và tên là bắt buộc",
+            "fullNameMinLength": "Họ và tên phải có ít nhất 2 ký tự"
+        }
+    },
+    "search":{
+        "title":"Tìm kiếm",
+        "noResult":"Không tìm thấy kết quả",
+        "keyword":"Tìm kiếm",
+        "cancel":"Thoát"
+
+    },
+   "header": {
+        "title": "Moon Co.",
+        "hi": "Chào",
+        "search": "Tìm kiếm"
+    }
+}

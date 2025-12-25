@@ -1,0 +1,130 @@
+{
+    "onboading": {
+        "title": "Welcome to Moon co.",
+        "description": "The best place to buy your favorite products.",
+        "scurity": "By pressing continue, you agree to our Terms of Service and you have read our Privacy Policy",
+        "continue": "Continue",
+        "next": "Next",
+        "skip": "Skip",
+        "prev": "Previous",
+        "loginButton": "Login",
+        "signupButton": "Sign Up",
+        "slides": [
+            {
+                "title": "Welcome to\nMoon Co.",
+                "description": "Discover sustainable fashion that makes a difference. Join us in creating a better future for our planet."
+            },
+            {
+                "title": "Find The\nBest Collections",
+                "description": "Get your dream item easily with Moon Co. and get other interesting offers"
+            },
+            {
+                "title": "Start Your\nFashion Journey",
+                "description": "Create an account to unlock exclusive deals and personalized recommendations"
+            }
+        ],
+        "signUp": "Sign Up",
+        "signIn": "Sign In",
+        "info": {
+            "delivery": {
+                "title": "Delivery",
+                "description": "Free delivery for orders in Vietnam"
+            },
+            "return": {
+                "title": "Return",
+                "description": "Return within 30 days if you are not satisfied"
+            },
+            "crafted": {
+                "title": "Crafted",
+                "description": "Products are made from environmentally friendly materials"
+            }
+        },
+        "language": {
+            "title": "Language",
+            "description": "Choose your preferred language"
+        }
+    },
+    "auth": {
+        "titlePrivate": "By continuing you agree to out",
+        "privacyPolicy": "Privacy Policy",
+        "and": "and",
+        "terms": "Terms of Service",
+        "login": {
+            "title": "Welcome Back",
+            "subtitle": "Sign in to continue shopping",
+            "email": "Email",
+            "emailPlaceholder": "your.email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "••••••••",
+            "forgotPassword": "Forgot Password?",
+            "loginButton": "Sign In",
+            "loggingIn": "Signing in...",
+            "orDivider": "or",
+            "continueWithGoogle": "Continue with Google",
+            "continueWithApple": "Continue with Apple",
+            "noAccount": "Don't have an account?",
+            "signUpNow": "Sign up now"
+        },
+        "register": {
+            "title": "Create Account",
+            "subtitle": "Sign up to start your shopping experience",
+            "fullName": "Full Name",
+            "fullNamePlaceholder": "John Doe",
+            "email": "Email",
+            "emailPlaceholder": "your.email@example.com",
+            "password": "Password",
+            "passwordPlaceholder": "••••••••",
+            "confirmPassword": "Confirm Password",
+            "confirmPasswordPlaceholder": "••••••••",
+            "passwordRequirements": "Password requirements:",
+            "minLength": "At least 6 characters",
+            "uppercase": "At least 1 uppercase letter",
+            "lowercase": "At least 1 lowercase letter",
+            "number": "At least 1 number",
+            "termsAgree": "By signing up, you agree to our",
+            "termsOfService": "Terms of Service",
+            "privacyPolicy": "Privacy Policy",
+            "ofUs": "",
+            "registerButton": "Sign Up",
+            "registering": "Signing up...",
+            "orDivider": "or",
+            "continueWithGoogle": "Sign up with Google",
+            "continueWithApple": "Sign up with Apple",
+            "haveAccount": "Already have an account?",
+            "signInNow": "Sign in"
+        },
+        "forgotPassword": {
+            "backButton": "← Back",
+            "title": "Forgot Password?",
+            "subtitle": "Enter your email to receive a password reset link",
+            "email": "Email",
+            "emailPlaceholder": "your.email@example.com",
+            "infoMessage": "We'll send you an email with a link to reset your password. Please check your spam folder if you don't see it.",
+            "submitButton": "Send Reset Link",
+            "sending": "Sending...",
+            "successMessage": "Password reset email sent. Please check your inbox."
+        },
+        "validation": {
+            "emailRequired": "Email is required",
+            "emailInvalid": "Invalid email address",
+            "passwordRequired": "Password is required",
+            "passwordMinLength": "Password must be at least 6 characters",
+            "passwordStrength": "Password must contain at least 1 uppercase, 1 lowercase and 1 number",
+            "confirmPasswordRequired": "Confirm password is required",
+            "confirmPasswordMatch": "Passwords do not match",
+            "fullNameRequired": "Full name is required",
+            "fullNameMinLength": "Full name must be at least 2 characters"
+        }
+    },
+    "search": {
+        "title": "Search",
+        "noResult": "No result",
+        "keyword":"Keyword",
+        "cancel": "Cancel"
+    },
+    "header": {
+        "title": "Moon Co.",
+        "hi": "Hi",
+        "search": "Search"
+    }
+}
