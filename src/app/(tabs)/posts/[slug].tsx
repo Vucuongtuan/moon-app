@@ -10,27 +10,26 @@ import { ScrollView } from "react-native";
 
 
 
-export default function PostScreen() {
-     const { slug } = useLocalSearchParams()
-     const {locale} = useLocale();
+export default function PostDetailsScreen() {
+    const { slug } = useLocalSearchParams()
+    const { locale } = useLocale();
 
 
-     const {data,isFetching,isError}= useQuery({
+    const { data, isFetching, isError } = useQuery({
         queryKey: ['post', slug],
-        queryFn: async () => await findPostBySlug(slug as string,locale),
+        queryFn: async () => await findPostBySlug(slug as string, locale),
         staleTime: 1000 * 60 * 60 * 24, // 24 hours
         gcTime: 1000 * 60 * 60 * 24,    // 24 hours
-     })
+    })
 
 
-  
+
     const media = data?.image as Media
     return (
         <ThemedView className="flex-1">
             <ScrollView>
-
-           <PostHeader image={media}/> 
-           <LexicalRenderer json={data?.content}/>
+                <PostHeader image={media} />
+                <LexicalRenderer json={data?.content} />
             </ScrollView>
         </ThemedView>
     );

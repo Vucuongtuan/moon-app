@@ -22,10 +22,31 @@ export interface MediaVideoProps extends Omit<VideoViewProps, 'player'> {
 
 export type MediaProps = MediaImageProps | MediaVideoProps;
 
+function detectTypeFromUrl(url: string): 'video' | 'image' {
+    const videoExtensions = ['.mp4', '.mov', '.avi', '.webm', '.mkv', '.m4v', '.3gp'];
+    const lowerUrl = url.toLowerCase();
+    
+    for (const ext of videoExtensions) {
+        if (lowerUrl.endsWith(ext)) {
+            return 'video';
+        }
+    }
+    
+    return 'image';
+}
+
 export default function Media(props: MediaProps) {
     const { resource, type, sizes, ...rest } = props;
 
-    if (!type && typeof resource === 'object' && resource.mimeType) {
+    if (type === 'video') {
+        return <Video resource={resource} sizes={sizes} {...(rest as any)} />;
+    }
+    
+    if (type === 'image') {
+        return <ImageComp resource={resource} sizes={sizes} {...(rest as any)} />;
+    }
+
+    if (typeof resource === 'object' && resource?.mimeType) {
         const detectedType = resource.mimeType.startsWith('video/') ? 'video' : 'image';
 
         if (detectedType === 'video') {
@@ -34,8 +55,13 @@ export default function Media(props: MediaProps) {
         return <ImageComp resource={resource} sizes={sizes} {...(rest as any)} />;
     }
 
-    if (type === 'video') {
-        return <Video resource={resource} sizes={sizes} {...(rest as any)} />;
+    if (typeof resource === 'string') {
+        const detectedType = detectTypeFromUrl(resource);
+        
+        if (detectedType === 'video') {
+            return <Video resource={resource} sizes={sizes} {...(rest as any)} />;
+        }
+        return <ImageComp resource={resource} sizes={sizes} {...(rest as any)} />;
     }
 
     return <ImageComp resource={resource} sizes={sizes} {...(rest as any)} />;

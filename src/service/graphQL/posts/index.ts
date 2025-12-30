@@ -57,8 +57,6 @@ export const findPostBySlug = async (slug: string,locale:Lang) => {
         }
     }
 }
-
-
         `,
         {
                 locale:locale,
@@ -67,4 +65,48 @@ export const findPostBySlug = async (slug: string,locale:Lang) => {
     )
     if(err || !result) throw err
     return result.data.Posts.docs[0]
+}
+
+
+export const findPosts = async ({ limit = 10, page = 1, locale }: {
+    limit?: number, page?: number, locale: Lang
+}) => {
+    const [result, err] = await gqlFetch(
+        `query Posts($page: Int, $limit: Int) {
+            Posts(
+                sort: "-createdAt"
+                page: $page
+                limit: $limit
+                locale: ${locale}
+            ) {
+                docs {
+                    id
+                    title
+                    description
+                    slug
+                    updatedAt
+                    createdAt
+                    image {
+                        id
+                        alt
+                        blurData
+                        url
+                        width
+                        height
+                    }
+                }
+                hasNextPage
+                nextPage
+                totalPages
+                totalDocs
+            }
+        }`,
+        {
+            page: page,
+            limit: limit,
+        }
+    )
+    if (err || !result) throw err;
+
+    return result?.data.Posts
 }

@@ -16,6 +16,7 @@ export default function IndexScreen() {
         { title: "Terms", path: "/terms" },
         { title: "Privacy Policy", path: "/privacy-policy" },
         { title: "Tabs", path: "/(tabs)" },
+        {title : "Posts List", path: "/(posts)"},
     ];
 
 

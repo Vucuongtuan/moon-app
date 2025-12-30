@@ -126,5 +126,11 @@
         "title": "Moon Co.",
         "hi": "Hi",
         "search": "Search"
+    },
+    "posts":{
+        "title": "Posts",
+        "noPosts": "No posts available.",
+        "allPosts": "All Posts",
+        "description": "Explore the latest articles and updates from Moon Co."
     }
 }
