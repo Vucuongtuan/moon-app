@@ -712,6 +712,7 @@ export interface Page {
         | SpotlightMediaBlock
         | InfoListBlock
         | ModelBlock
+        | GalleryBlockProps
       )[]
     | null;
   slug: string;
@@ -883,6 +884,22 @@ export interface ModelBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'Model';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlockProps".
+ */
+export interface GalleryBlockProps {
+  gallery?:
+    | {
+        link: LinkGroup;
+        image?: (string | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1134,6 +1151,7 @@ export interface Post {
   };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1682,6 +1700,7 @@ export interface PagesSelect<T extends boolean = true> {
         SpotlightMedia?: T | SpotlightMediaBlockSelect<T>;
         InfoList?: T | InfoListBlockSelect<T>;
         Model?: T | ModelBlockSelect<T>;
+        gallery?: T | GalleryBlockPropsSelect<T>;
       };
   slug?: T;
   slugLock?: T;
@@ -1900,6 +1919,21 @@ export interface ModelBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlockProps_select".
+ */
+export interface GalleryBlockPropsSelect<T extends boolean = true> {
+  gallery?:
+    | T
+    | {
+        link?: T | LinkGroupSelect<T>;
+        image?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1919,6 +1953,7 @@ export interface PostsSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2452,10 +2487,23 @@ export interface TaskSchedulePublish {
   input: {
     type?: ('publish' | 'unpublish') | null;
     locale?: string | null;
-    doc?: {
-      relationTo: 'pages';
-      value: string | Page;
-    } | null;
+    doc?:
+      | ({
+          relationTo: 'newsletter';
+          value: string | Newsletter;
+        } | null)
+      | ({
+          relationTo: 'pages';
+          value: string | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: string | Post;
+        } | null)
+      | ({
+          relationTo: 'products';
+          value: string | Product;
+        } | null);
     global?: string | null;
     user?: (string | null) | User;
   };

@@ -19,7 +19,7 @@ export default function HomeScreen() {
         queryFn: async () => findPageBySlug('home')
     });
     const doc = data?.Screens?.docs?.[0];
-
+    console.log({doc});
     const isHapticTriggered = useRef(false);
 
     const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -48,7 +48,7 @@ export default function HomeScreen() {
 
     const renderError = () => (
         <ThemedView  style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-            <ThemedText className="text-center text-red-500">
+            <ThemedText >
                 Không thể tải dữ liệu. Vui lòng thử lại.
             </ThemedText>
         </ThemedView>

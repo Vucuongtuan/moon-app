@@ -5,6 +5,7 @@ import { Image, ImageProps } from "expo-image";
 
 
 
+
 interface ImageCompProps extends Omit<ImageProps, 'source'> {
     resource?: string | MediaType;
     sizes?: SizeMedia;
@@ -22,9 +23,10 @@ export default function ImageComp(props: ImageCompProps) {
         ? resource.blurData
         : undefined;
 
+        console.log({source,blurhash,sizes})
     return (
         <Image
-            source={source}
+            source={typeof source === 'string' ? { uri: source } : source}
             placeholder={blurhash || placeholder || DefaultBlurImage}
             transition={200}
             contentFit={props.contentFit || 'cover'}

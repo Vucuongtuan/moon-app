@@ -21,6 +21,7 @@ export const Colors = {
     secondary: '#141414',
     secondaryForeground: '#1f1f1f',
     accent: '#3569ed',
+    subSecondary: '#666',
   },
   dark: {
     text: '#ECEDEE',
@@ -34,6 +35,7 @@ export const Colors = {
     secondary: '#ECEDEE',
     secondaryForeground: '#e5e5e5',
     accent: '#3569ed',
+    subSecondary: '#c0c8cf',
   },
 };
 

@@ -18,6 +18,8 @@ export const unstable_settings = {
 };
 
 
+
+
 // --- create splash screen 
 // Note: SplashScreen.setOptions không hoạt động trong Expo Go
 // Uncomment khi build development build hoặc production
