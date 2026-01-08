@@ -4,32 +4,33 @@ import React from "react";
 import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { ThemedIcon } from "../themed-icon";
 import HighlightContent from "./HighlightContent";
+import { styles } from "./SearchResult.styles";
 
 interface SearchResultProps {
     data: any[];
     keyword: string;
 }
 
-export  function SearchResult({ data, keyword }: SearchResultProps) {
+export function SearchResult({ data, keyword }: SearchResultProps) {
     const { locale } = useLocale();
     const router = useRouter();
 
     const renderItem = ({ item }: { item: any }) => (
         <TouchableOpacity 
-            onPress={() => router.push(`/(posts)${item.url}`)}
-            className="flex-row items-center mb-3"
+            onPress={() => router.push(`/posts${item.url}`)}            
+            style={styles.itemContainer}
         >
             {item.thumbnail ? (
                 <Image
-                source={{ uri: item.thumbnail }}
-                className="w-1/3 h-auto aspect-video rounded-md mr-3 bg-gray-200"
+                    source={{ uri: item.thumbnail }}
+                    style={styles.thumbnail}
                 />
             ): (
-                <View className="w-1/3 h-auto aspect-video rounded-md mr-3 bg-gray-200 justify-center items-center">
+                <View style={styles.placeholderContainer}>
                     <ThemedIcon name="image" size={40} color="gray" />
                 </View>
             )}
-            <View className="flex-1">
+            <View style={styles.textContainer}>
                 <HighlightContent
                     text={item.title}
                     keyword={keyword}
@@ -46,14 +47,14 @@ export  function SearchResult({ data, keyword }: SearchResultProps) {
             renderItem={renderItem}
             contentContainerStyle={{ paddingBottom: 20 }}
             keyboardShouldPersistTaps="handled"
-            className="flex-col"
+            style={styles.list}
         />
     );
 }
 
 export function SearchLoading() {
     return (
-        <View className="flex-1 justify-center items-center py-10">
+        <View style={styles.centerContainer}>
             <ActivityIndicator size="large" />
         </View>
     );
@@ -61,18 +62,18 @@ export function SearchLoading() {
 
 export function SearchError() {
     return (
-        <View className="flex-1 justify-center items-center py-10 gap-4">
+        <View style={[styles.centerContainer, styles.gapContainer]}>
             <ThemedIcon name="alert-circle" size={40} color="red" />
-            <Text className="text-red-500">Something went wrong</Text>
+            <Text style={styles.errorText}>Something went wrong</Text>
         </View>
     );
 }
 
 export function SearchNoResult({ keyword }: { keyword: string }) {
     return (
-        <View className="flex-1 justify-center items-center py-10 gap-4">
+        <View style={[styles.centerContainer, styles.gapContainer]}>
             <ThemedIcon name="search" size={50} color="gray" />
-            <Text className="text-center text-lg font-medium text-gray-500">
+            <Text style={styles.noResultText}>
                 No results found for "{keyword}"
             </Text>
         </View>

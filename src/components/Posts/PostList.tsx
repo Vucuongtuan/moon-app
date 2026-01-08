@@ -6,7 +6,6 @@ import { Lang } from "@/src/types";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
-import MetaTitle from "./MetaTitle";
 import PostCard from "./PostCard";
 
 interface PostListProps {
@@ -31,10 +30,8 @@ export default function PostList({ contentContainerStyle }: PostListProps) {
         gcTime: 1000 * 60 * 60 * 24,    // 24 hours
     });
 
-    console.log({ data, isFetching, isError, error });
 
     const listData = [
-        { type: 'header' }, 
         ...(data?.docs || []).map((doc: Post) => ({ type: 'post', data: doc })),
         ...(data?.docs || []).map((doc: Post) => ({ type: 'post', data: doc })),
         ...(data?.docs || []).map((doc: Post) => ({ type: 'post', data: doc })),
@@ -47,24 +44,7 @@ export default function PostList({ contentContainerStyle }: PostListProps) {
             onScroll={scrollHandler}
             scrollEventThrottle={16}
             renderItem={({ item, index }) => {
-                if (item.type === 'header') {
-                    return (
-                        <MetaTitle
-                            title={{
-                                value: t("allPosts"),
-                                type: "title",
-                                style: { textAlign: 'center' }
-                            }}
-                            desc={{
-                                value: t("description"),
-                                type: "default",
-                                style: { textAlign: 'center', paddingVertical: 12 }
-                            }}
-                            style={{ paddingVertical: 12 }}
-                            stickyScrollY={scrollY}
-                        />
-                    );
-                }
+            
                 return <PostCard key={index} data={item.data} type="horizontal" />;
             }}
             keyExtractor={(item, index) => {

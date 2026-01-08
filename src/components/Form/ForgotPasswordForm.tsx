@@ -15,6 +15,7 @@ import Animated, {
 import { z } from "zod";
 import { Button, ControlledInput } from "../ui";
 import { Text } from "../ui/Text";
+import { styles } from "./ForgotPasswordForm.styles";
 
 const forgotPasswordSchema = z.object({
     email: z
@@ -70,7 +71,7 @@ export default function ForgotPasswordForm() {
     }));
 
     return (
-        <View className="gap-5">
+        <View style={styles.ctn}>
             {/* Email Input */}
             <Animated.View entering={FadeInDown.duration(600).delay(200)}>
                 <ControlledInput
@@ -88,13 +89,13 @@ export default function ForgotPasswordForm() {
             {/* Info Box */}
             <Animated.View
                 entering={FadeInUp.duration(600).delay(300)}
-                className="bg-blue-50/80 p-4 rounded-2xl border-2 border-blue-100"
+                style={styles.infoCtn}
             >
-                <View className="flex-row items-start gap-3">
-                    <View className="w-6 h-6 rounded-full bg-blue-500/20 items-center justify-center mt-0.5">
-                        <Text className="text-blue-600 font-bold text-xs">i</Text>
+                <View style={styles.infoContentCtn}>
+                    <View style={styles.infoIconCtn}>
+                        <Text style={styles.infoIconTxt}>i</Text>
                     </View>
-                    <Text className="flex-1 text-sm text-gray-700 leading-5">
+                    <Text style={styles.infoTxt}>
                         {t('infoMessage')}
                     </Text>
                 </View>
@@ -103,15 +104,14 @@ export default function ForgotPasswordForm() {
             {/* Submit Button */}
             <Animated.View
                 entering={FadeInUp.duration(600).delay(400)}
-                style={buttonAnimatedStyle}
-                className="mt-2"
+                style={[styles.submitBtnWrapper, buttonAnimatedStyle]}
             >
                 <Button
                     onPress={handleSubmit(onSubmit)}
                     disabled={isSubmitting}
-                    className="w-full bg-[#141414] h-14 rounded-2xl shadow-lg shadow-black/10"
+                    style={styles.submitBtn}
                 >
-                    <Text className="text-white font-semibold text-base">
+                    <Text style={styles.submitBtnTxt}>
                         {isSubmitting ? t('sending') : t('submitButton')}
                     </Text>
                 </Button>

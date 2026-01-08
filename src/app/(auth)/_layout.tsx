@@ -2,20 +2,21 @@ import { ThemedView } from "@/src/components/themed-view";
 import { useTranslations } from "@/src/hooks/useTranslations";
 import { Link, Slot } from "expo-router";
 import { Text, View } from "react-native";
+import { styles } from "./_layout.styles";
 
 export default function AuthLayout() {
     const { t } = useTranslations('auth')
     return (
         <ThemedView style={{ flex: 1 }}>
-            <View className="flex-1">
+            <View style={styles.container}>
                 <Slot />
             </View>
-            <View className="py-8 px-6">
-                <Text className="text-center text-gray-500 leading-6">
+            <View style={styles.footer}>
+                <Text style={styles.footerText}>
                     {t('titlePrivate')}
                     {" "}
                     <Link href="/terms">
-                        <Text className="text-blue-600 font-medium">
+                        <Text style={styles.linkText}>
                             {t('terms')}
                         </Text>
                     </Link>
@@ -23,7 +24,7 @@ export default function AuthLayout() {
                     {t('and')}
                     {" "}
                     <Link href="/privacy-policy">
-                        <Text className="text-blue-600 font-medium">
+                        <Text style={styles.linkText}>
                             {t('privacyPolicy')}
                         </Text>
                     </Link>

@@ -1,32 +1,44 @@
 import { useLocale } from "@/src/provider/localeProvider";
-import { cn } from "@/src/utils/cn";
 import { Pressable, Text, View } from "react-native";
-
-
-
-
+import { styles } from "./SelectLang.styles";
 
 export default function SelectLang() {
     const { locale, changeLang } = useLocale();
 
     return (
-        <View className="w-full flex-col gap-4 " >
-            <View className={
-                cn(
-                    'flex-row gap-4 items-center justify-center ',
-                )
-            }>
-                <Pressable key={'vi'} onPress={() => changeLang('vi')} className={cn(
-                    "flex-1 items-center justify-center py-3 rounded-4xl",
-                    locale === 'vi' && 'bg-[#ff8c42] text-white'
-                )} disabled={locale === 'vi'}>
-                    <Text className="text-xl font-semibold">Tiếng Việt</Text>
+        <View style={styles.container}>
+            <View style={styles.row}>
+                <Pressable 
+                    key={'vi'} 
+                    onPress={() => changeLang('vi')} 
+                    style={[
+                        styles.button,
+                        locale === 'vi' && styles.buttonSelected
+                    ]}
+                    disabled={locale === 'vi'}
+                >
+                    <Text style={[
+                        styles.text,
+                        locale === 'vi' && styles.textSelected
+                    ]}>
+                        Tiếng Việt
+                    </Text>
                 </Pressable>
-                <Pressable key={'en'} onPress={() => changeLang('en')} className={cn(
-                    "flex-1 items-center justify-center py-3 rounded-4xl",
-                    locale === 'en' && 'bg-[#ff8c42] text-white'
-                )} disabled={locale === 'en'}>
-                    <Text className="text-xl font-semibold">English</Text>
+                <Pressable 
+                    key={'en'} 
+                    onPress={() => changeLang('en')} 
+                    style={[
+                        styles.button,
+                        locale === 'en' && styles.buttonSelected
+                    ]}
+                    disabled={locale === 'en'}
+                >
+                    <Text style={[
+                        styles.text,
+                        locale === 'en' && styles.textSelected
+                    ]}>
+                        English
+                    </Text>
                 </Pressable>
             </View>
         </View >

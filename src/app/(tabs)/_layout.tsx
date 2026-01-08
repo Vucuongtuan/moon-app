@@ -19,30 +19,21 @@ export default function TabsLayout() {
             tintColor={dynamicColor}
             backgroundColor={isDark ? 'black' : 'white'}
             blurEffect='systemDefault'
+            disableTransparentOnScrollEdge
         >
             <NativeTabs.Trigger name="index">
                 <Label>Home</Label>
-                <Icon sf="house.fill" drawable="custom_android_drawable" />
-            </NativeTabs.Trigger>
-            <NativeTabs.Trigger name="posts/index"  options={{
-                blurEffect: 'systemDefault'
-            }}>
-                <Label>Posts</Label>
-                <Icon sf="doc.text" drawable="custom_android_drawable" />
+                <Icon sf="house.fill" drawable="custom_home_drawable"  />
             </NativeTabs.Trigger>
             <NativeTabs.Trigger name="cart">
                 <Label>Cart</Label>
-                <Icon sf="cart" drawable="custom_android_drawable" />
+                <Icon sf="cart" drawable="custom_cart_drawable" selectedColor={'red'}/>
             </NativeTabs.Trigger>
-          
             <NativeTabs.Trigger name="profile">
                 <Label>Profile</Label>
                 <Icon sf="person.fill" drawable="custom_android_drawable" />
             </NativeTabs.Trigger>
-            <NativeTabs.Trigger name="search" role="search">
-                <Label>Search</Label>
-                <Icon sf="magnifyingglass" drawable="custom_android_drawable" />
-            </NativeTabs.Trigger>
+         
         </ NativeTabs>
     )
 }

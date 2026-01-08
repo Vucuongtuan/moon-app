@@ -4,6 +4,7 @@ import { useTranslations } from '@/src/hooks/useTranslations';
 import { useRouter } from 'expo-router';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, View } from 'react-native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { styles } from './forgot-password.styles';
 
 export default function ForgotPasswordScreen() {
     const router = useRouter();
@@ -12,25 +13,25 @@ export default function ForgotPasswordScreen() {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            className="flex-1"
+            style={styles.ctn}
         >
             <ScrollView
-                className="flex-1 bg-[#f8f5ee]"
-                contentContainerClassName="flex-grow px-6"
+                style={styles.scrollCtn}
+                contentContainerStyle={styles.scrollContentCtn}
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
             >
-                <View className="flex-1 pt-8 pb-8">
+                <View style={styles.mainCtn}>
                     {/* Back Button */}
                     <Animated.View
                         entering={FadeInUp.duration(400).delay(50)}
-                        className="mb-8"
+                        style={styles.backBtnWrapper}
                     >
                         <Pressable
                             onPress={() => router.back()}
-                            className="flex-row items-center py-2 -ml-2"
+                            style={styles.backBtn}
                         >
-                            <Text className="text-[#3569ed] font-semibold text-base">
+                            <Text style={styles.backBtnTxt}>
                                 {t('backButton')}
                             </Text>
                         </Pressable>
@@ -39,12 +40,12 @@ export default function ForgotPasswordScreen() {
                     {/* Header */}
                     <Animated.View
                         entering={FadeInDown.duration(600).delay(100)}
-                        className="mb-10"
+                        style={styles.headerCtn}
                     >
-                        <Text className="text-4xl font-bold text-[#141414] mb-3 leading-tight">
+                        <Text style={styles.titleTxt}>
                             {t('title')}
                         </Text>
-                        <Text className="text-base text-gray-600 leading-relaxed">
+                        <Text style={styles.subtitleTxt}>
                             {t('subtitle')}
                         </Text>
                     </Animated.View>

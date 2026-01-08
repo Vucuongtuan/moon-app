@@ -1,16 +1,25 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, useColorScheme, TextStyle } from 'react-native';
 import { LexicalNode, TEXT_FORMAT_BOLD, TEXT_FORMAT_ITALIC, TEXT_FORMAT_STRIKETHROUGH, TEXT_FORMAT_UNDERLINE } from '../types';
+import { styles } from './TextNode.styles';
 
 export const TextNode = ({ node }: { node: LexicalNode }) => {
   const format = node.format || 0;
+  const colorScheme = useColorScheme();
+  const textColor = colorScheme === 'dark' ? 'white' : 'black';
 
-  let classes = "text-base leading-6 dark:text-white text-black";
+  const textStyles: TextStyle[] = [styles.base, { color: textColor }];
   
-  if (format & TEXT_FORMAT_BOLD) classes += " font-bold";
-  if (format & TEXT_FORMAT_ITALIC) classes += " italic";
-  if (format & TEXT_FORMAT_STRIKETHROUGH) classes += " line-through";
-  if (format & TEXT_FORMAT_UNDERLINE) classes += " underline";
+  if (format & TEXT_FORMAT_BOLD) textStyles.push(styles.bold);
+  if (format & TEXT_FORMAT_ITALIC) textStyles.push(styles.italic);
+  
+  const decorations: string[] = [];
+  if (format & TEXT_FORMAT_STRIKETHROUGH) decorations.push('line-through');
+  if (format & TEXT_FORMAT_UNDERLINE) decorations.push('underline');
 
-  return <Text className={classes}>{node.text}</Text>;
+  if (decorations.length > 0) {
+      textStyles.push({ textDecorationLine: decorations.join(' ') as TextStyle['textDecorationLine'] });
+  }
+
+  return <Text style={textStyles}>{node.text}</Text>;
 };

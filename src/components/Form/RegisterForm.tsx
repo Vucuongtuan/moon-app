@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Pressable, View } from "react-native";
 import { Button, ControlledInput } from "../ui";
 import { Text } from "../ui/Text";
+import { styles } from "./RegisterForm.styles";
 
 export default function RegisterForm() {
     const router = useRouter();
@@ -38,7 +39,7 @@ export default function RegisterForm() {
     };
 
     return (
-        <View className="gap-3">
+        <View style={styles.ctn}>
             {/* Full Name Input */}
             <ControlledInput
                 control={control}
@@ -89,32 +90,32 @@ export default function RegisterForm() {
             />
 
             {/* Password Requirements */}
-            <View className="bg-blue-50/80 p-3 rounded-xl border border-blue-100">
-                <Text className="text-xs text-gray-700 mb-2 font-semibold">
+            <View style={styles.requirementsCtn}>
+                <Text style={styles.requirementsTitleTxt}>
                     {t('passwordRequirements')}
                 </Text>
-                <View className="flex-row flex-wrap gap-x-4 gap-y-1">
-                    <View className="flex-row items-center gap-1.5">
-                        <View className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                        <Text className="text-[10px] text-gray-600">
+                <View style={styles.requirementsListCtn}>
+                    <View style={styles.requirementItemCtn}>
+                        <View style={styles.requirementDot} />
+                        <Text style={styles.requirementTxt}>
                             {t('minLength')}
                         </Text>
                     </View>
-                    <View className="flex-row items-center gap-1.5">
-                        <View className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                        <Text className="text-[10px] text-gray-600">
+                    <View style={styles.requirementItemCtn}>
+                        <View style={styles.requirementDot} />
+                        <Text style={styles.requirementTxt}>
                             {t('uppercase')}
                         </Text>
                     </View>
-                    <View className="flex-row items-center gap-1.5">
-                        <View className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                        <Text className="text-[10px] text-gray-600">
+                    <View style={styles.requirementItemCtn}>
+                        <View style={styles.requirementDot} />
+                        <Text style={styles.requirementTxt}>
                             {t('lowercase')}
                         </Text>
                     </View>
-                    <View className="flex-row items-center gap-1.5">
-                        <View className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                        <Text className="text-[10px] text-gray-600">
+                    <View style={styles.requirementItemCtn}>
+                        <View style={styles.requirementDot} />
+                        <Text style={styles.requirementTxt}>
                             {t('number')}
                         </Text>
                     </View>
@@ -123,56 +124,56 @@ export default function RegisterForm() {
 
 
             {/* Register Button */}
-            <View className="mt-1">
+            <View style={styles.registerBtnWrapper}>
                 <Button
                     onPress={handleSubmit(onSubmit)}
                     disabled={isSubmitting}
-                    className="w-full bg-[#141414] h-12 rounded-xl shadow-lg shadow-black/10"
+                    style={styles.registerBtn}
                 >
-                    <Text className="text-white font-semibold text-base">
+                    <Text style={styles.registerBtnTxt}>
                         {isSubmitting ? t('registering') : t('registerButton')}
                     </Text>
                 </Button>
             </View>
 
             {/* Divider */}
-            <View className="flex-row items-center my-4">
-                <View className="flex-1 h-px bg-gray-300" />
-                <Text className="mx-4 text-sm text-gray-500 font-medium">
+            <View style={styles.dividerCtn}>
+                <View style={styles.dividerLine} />
+                <Text style={styles.dividerTxt}>
                     {t('orDivider')}
                 </Text>
-                <View className="flex-1 h-px bg-gray-300" />
+                <View style={styles.dividerLine} />
             </View>
 
             {/* Social Register Buttons */}
-            <View className="gap-2">
+            <View style={styles.socialBtnsCtn}>
                 <Button
                     variant="outline"
-                    className="w-full h-12 rounded-xl border border-gray-200 bg-white"
+                    style={styles.socialBtn}
                 >
-                    <Text className="text-[#141414] font-semibold">
+                    <Text style={styles.socialBtnTxt}>
                         {t('continueWithGoogle')}
                     </Text>
                 </Button>
 
                 <Button
                     variant="outline"
-                    className="w-full h-12 rounded-xl border border-gray-200 bg-white"
+                    style={styles.socialBtn}
                 >
-                    <Text className="text-[#141414] font-semibold">
+                    <Text style={styles.socialBtnTxt}>
                         {t('continueWithApple')}
                     </Text>
                 </Button>
             </View>
 
             {/* Sign In Link */}
-            <View className="flex-row justify-center items-center mt-6 mb-4">
-                <Text className="text-gray-600 text-base">
+            <View style={styles.footerCtn}>
+                <Text style={styles.footerTxt}>
                     {t('haveAccount')}{' '}
                 </Text>
                 <Link href="/(auth)/login" asChild>
-                    <Pressable className="py-1">
-                        <Text className="text-[#3569ed] font-bold text-base">
+                    <Pressable style={styles.signInBtn}>
+                        <Text style={styles.signInTxt}>
                             {t('signInNow')}
                         </Text>
                     </Pressable>

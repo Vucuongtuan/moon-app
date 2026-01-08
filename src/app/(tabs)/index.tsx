@@ -9,6 +9,7 @@ import * as Haptics from 'expo-haptics';
 import { useRef } from 'react';
 import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { styles } from './index.styles';
 
 export default function HomeScreen() {
     const locale = useLocale();
@@ -19,7 +20,6 @@ export default function HomeScreen() {
         queryFn: async () => findPageBySlug('home')
     });
     const doc = data?.Screens?.docs?.[0];
-    console.log({doc});
     const isHapticTriggered = useRef(false);
 
     const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -41,25 +41,25 @@ export default function HomeScreen() {
     };
 
     const renderLoading = () => (
-        <ThemedView style={{ flex: 1 , alignItems: 'center', justifyContent: 'center' }}>
+        <ThemedView style={styles.loadingCtn}>
             <ActivityIndicator size="large" />
         </ThemedView>
     );
 
     const renderError = () => (
-        <ThemedView  style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+        <ThemedView  style={styles.errorCtn}>
             <ThemedText >
                 Không thể tải dữ liệu. Vui lòng thử lại.
             </ThemedText>
         </ThemedView>
     );
     return (
-        <ThemedView style={{flex:1, paddingTop: insets.top}}>
+        <ThemedView style={[styles.ctn, { paddingTop: insets.top }]}>
             <HeaderSection />
             {(isFetching && !doc) ? renderLoading() : 
              (isError || (!isFetching && !doc)) ? renderError() : (
                 <ScrollView
-                    className="flex-1"
+                    style={styles.scrollCtn}
                     contentContainerStyle={{
                         paddingHorizontal: 20,
                         paddingTop: 10,

@@ -1,81 +1,52 @@
 import { useThemeColor } from '@/src/hooks/use-theme-color';
-import { cn } from '@/src/utils/cn';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { cva, type VariantProps } from 'class-variance-authority';
 import React, { forwardRef } from 'react';
-import { Platform, Pressable, TextInput, useColorScheme, View } from 'react-native';
+import { Platform, Pressable, TextInput, useColorScheme, View, ViewStyle } from 'react-native';
 import { Text } from './Text';
+import { styles } from './Input.styles';
 
-const inputVariants = cva(
-    cn(
-        'w-full rounded-xl  px-4 py-3.5 text-base font-normal',
-        Platform.select({
-            web: 'outline-none transition-all duration-200 focus:ring-2 focus:ring-offset-0',
-        })
-    ),
-    {
-        variants: {
-            variant: {
-                default: cn(
-                    'border-gray-300 border bg-white text-[#141414] placeholder:text-gray-400',
-                    Platform.select({
-                        web: 'focus:border-[#3569ed] focus:ring-[#3569ed]/20',
-                    })
-                ),
-                error: cn(
-                    'border-red-400 border bg-white text-[#141414] placeholder:text-gray-400',
-                    Platform.select({
-                        web: 'focus:border-red-500 focus:ring-red-500/20',
-                    })
-                ),
-                noStyle: cn(
-                    'outline-none'
-                ),
-            },
-        },
-        defaultVariants: {
-            variant: 'default',
-        },
-    }
-);
+// Removed cva variants in favor of explicit style logic
 
-type InputProps = React.ComponentProps<typeof TextInput> &
-    VariantProps<typeof inputVariants> & {
-        label?: string;
-        error?: string;
-        containerClassName?: string;
-        type?: 'text' | 'password';
-    };
+type InputProps = React.ComponentProps<typeof TextInput> & {
+    label?: string;
+    error?: string;
+    containerStyle?: ViewStyle;
+    type?: 'text' | 'password';
+    variant?: 'default' | 'error' | 'noStyle';
+};
 
 const Input = forwardRef<TextInput, InputProps>(
-    ({ className, variant, label, error, containerClassName, type, ...props }, ref) => {
+    ({ style, variant = 'default', label, error, containerStyle, type, ...props }, ref) => {
         const [showPass, setShowPass] = React.useState(false);
         const theme = useColorScheme();
-        const isDark = theme === 'dark';
         const isPassword = type === 'password';
         const color = useThemeColor({ }, 'text');
         
+        // Determine input style based on variant and error state
+        const inputStyle = [
+            styles.inputField,
+            variant === 'noStyle' ? styles.inputNoStyle : (error ? styles.inputError : styles.inputDefault),
+            style
+        ];
+
         return (
-            <View className={cn('w-full relative ', containerClassName)}>
+            <View style={[styles.ctn, containerStyle]}>
                 {label && (
-                    <Text className="mb-2 text-sm font-medium text-gray-700">
+                    <Text style={styles.labelTxt}>
                         {label}
                     </Text>
                 )}
                 <TextInput
                     ref={ref}
-                    className={cn(
-                        inputVariants({ variant: error ? 'error' : variant }),
-                        className
-                    )}
-                    placeholderTextColor={color}
+                    style={inputStyle}
+                    placeholderTextColor="#9ca3af" // text-gray-400
                     {...props}
                     secureTextEntry={!showPass && isPassword}
                 />
                 {isPassword && (
                     <Pressable
                         onPress={() => setShowPass((prev) => !prev)}
-                        className="absolute right-4 top-1/2"
+                        style={styles.passwordToggleBtn}
                     >
                         {showPass ? (
                             <AntDesign name="eye-invisible" size={24} color="black" />
@@ -85,7 +56,7 @@ const Input = forwardRef<TextInput, InputProps>(
                     </Pressable>
                 )}
                 {error && (
-                    <Text className="mt-1 text-sm text-red-500">{error}</Text>
+                    <Text style={styles.errorTxt}>{error}</Text>
                 )}
             </View>
         );
@@ -94,6 +65,6 @@ const Input = forwardRef<TextInput, InputProps>(
 
 Input.displayName = 'Input';
 
-export { Input, inputVariants };
+export { Input };
 export type { InputProps };
 

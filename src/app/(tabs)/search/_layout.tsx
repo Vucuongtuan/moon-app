@@ -16,6 +16,7 @@ export default function SearchLayout() {
       <Stack.Screen
         name="index"
         options={{
+          headerTitleAlign:'center',
           title: `${t('title')}`,
           headerSearchBarOptions: {
             placement: 'automatic',

@@ -1,9 +1,8 @@
 import { i18n } from "@/src/i18n";
-import { Dimensions, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Text } from "../ui/Text";
 import SelectLang from "./SelectLang";
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+import { styles } from "./IntroContent.styles";
 
 interface IntroContentProps {
     title: string;
@@ -34,36 +33,37 @@ export default function IntroContent({
 
     return (
         <>
-            <View className="prose prose-lg">
-                <Text className="text-5xl font-bold  leading-tight mb-3">
+            <View style={styles.textCtn}>
+                <Text style={styles.titleTxt}>
                     {title}
                 </Text>
 
-                <Text className="prose prose-lg dark:text-gray-400 text-gray-500 mb-4 leading-relaxed">
+                <Text style={styles.descTxt}>
                     {description}
                 </Text>
             </View>
+            
             {isFirstStep && (
-                <SelectLang
-                />
+                <SelectLang />
             )}
-            <View className="">
+
+            <View style={styles.footerCtn}>
                 {showAuthButtons && (
-                    <View className="flex-row gap-4">
+                    <View style={styles.btnRowCtn}>
                         <TouchableOpacity
-                            className="flex-1 py-4 border-2 border-[#141414] rounded-full items-center justify-center"
+                            style={styles.outlineBtn}
                             onPress={onSignUp}
                         >
-                            <Text className="text-[#141414] font-semibold text-base">
+                            <Text style={styles.outlineBtnTxt}>
                                 {i18n.t('onboading.signUp')}
                             </Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            className="flex-1 py-4 bg-[#ff8c42] rounded-full items-center justify-center"
+                            style={styles.primaryBtn}
                             onPress={onSignIn}
                         >
-                            <Text className="text-white font-semibold text-base">
+                            <Text style={styles.primaryBtnTxt}>
                                 {i18n.t('onboading.signIn')}
                             </Text>
                         </TouchableOpacity>
@@ -71,13 +71,13 @@ export default function IntroContent({
                 )}
 
                 {!showAuthButtons && (
-                    <View className="flex-row gap-4">
+                    <View style={styles.btnRowCtn}>
                         {!isFirstStep && (
                             <TouchableOpacity
-                                className="flex-1 py-4 border-2 border-[#141414] rounded-full items-center justify-center"
+                                style={styles.outlineBtn}
                                 onPress={onPrev}
                             >
-                                <Text className="text-[#141414] font-semibold text-base">
+                                <Text style={styles.outlineBtnTxt}>
                                     {i18n.t('onboading.prev')}
                                 </Text>
                             </TouchableOpacity>
@@ -85,10 +85,10 @@ export default function IntroContent({
 
                         {!isLastStep && (
                             <TouchableOpacity
-                                className="flex-1 py-4 bg-[#ff8c42] rounded-full items-center justify-center"
+                                style={styles.primaryBtn}
                                 onPress={onNext}
                             >
-                                <Text className="text-white font-semibold text-base">
+                                <Text style={styles.primaryBtnTxt}>
                                     {i18n.t('onboading.next')}
                                 </Text>
                             </TouchableOpacity>
@@ -96,7 +96,6 @@ export default function IntroContent({
                     </View>
                 )}
             </View>
-
         </>
     );
 }

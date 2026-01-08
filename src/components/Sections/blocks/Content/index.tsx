@@ -4,6 +4,7 @@ import { ThemedText } from "@/src/components/themed-text";
 import { ThemedView } from "@/src/components/themed-view";
 import { useLocale } from "@/src/provider/localeProvider";
 import { Block } from "@/src/types";
+import { styles } from "./ContentBlock.styles";
 
 
 
@@ -24,7 +25,7 @@ export default function ContentBlock(props:COntentBlockProps) {
     const isVN = locale === 'vi'
     return (
         <ThemedView>
-            <ThemedText type="title" className="text-2xl font-semibold">{isVN ? title : title_en}</ThemedText>
+            <ThemedText type="title" style={styles.title}>{isVN ? title : title_en}</ThemedText>
             <ThemedText type="subtitle">{isVN ? description : description_en}</ThemedText>
             <LexicalRenderer json={isVN ? content : content_en} />
         </ThemedView>

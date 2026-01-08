@@ -2,7 +2,7 @@
 export { Button, buttonTextVariants, buttonVariants } from './Button';
 export type { ButtonProps } from './Button';
 
-export { Input, inputVariants } from './Input';
+export { Input } from './Input';
 export type { InputProps } from './Input';
 
 export { ControlledInput } from './ControlledInput';

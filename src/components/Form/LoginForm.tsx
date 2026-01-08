@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { Pressable, View } from "react-native";
 import { Button, ControlledInput } from "../ui";
 import { Text } from "../ui/Text";
+import { styles } from "./LoginForm.styles";
 
 export default function LoginForm() {
     const router = useRouter();
@@ -39,7 +40,7 @@ export default function LoginForm() {
     };
 
     return (
-        <View className="gap-3">
+        <View style={styles.ctn}>
             {/* Email Input */}
             <ControlledInput
                 control={control}
@@ -66,10 +67,10 @@ export default function LoginForm() {
             />
 
             {/* Forgot Password */}
-            <View className="items-end -mt-1">
+            <View style={styles.forgotPwdCtn}>
                 <Link href="/(auth)/forgot-password" asChild>
-                    <Pressable className="py-1">
-                        <Text className="text-sm text-[#3569ed] font-medium">
+                    <Pressable style={styles.forgotPwdBtn}>
+                        <Text style={styles.forgotPwdTxt}>
                             {t('forgotPassword')}
                         </Text>
                     </Pressable>
@@ -77,56 +78,56 @@ export default function LoginForm() {
             </View>
 
             {/* Login Button */}
-            <View className="mt-1">
+            <View style={styles.loginBtnWrapper}>
                 <Button
                     onPress={handleSubmit(onSubmit)}
                     disabled={isSubmitting}
-                    className="w-full bg-[#141414] h-12 rounded-xl shadow-lg shadow-black/10"
+                    style={styles.loginBtn}
                 >
-                    <Text className="text-white font-semibold text-base">
+                    <Text style={styles.loginBtnTxt}>
                         {isSubmitting ? t('loggingIn') : t('loginButton')}
                     </Text>
                 </Button>
             </View>
 
             {/* Divider */}
-            <View className="flex-row items-center my-4">
-                <View className="flex-1 h-px bg-gray-300" />
-                <Text className="mx-4 text-sm text-gray-500 font-medium text-center">
+            <View style={styles.dividerCtn}>
+                <View style={styles.dividerLine} />
+                <Text style={styles.dividerTxt}>
                     {t('orDivider')}
                 </Text>
-                <View className="flex-1 h-px bg-gray-300" />
+                <View style={styles.dividerLine} />
             </View>
 
             {/* Social Login Buttons */}
-            <View className="gap-2">
+            <View style={styles.socialBtnsCtn}>
                 <Button
                     variant="outline"
-                    className="w-full h-12 rounded-xl border border-gray-200 bg-white"
+                    style={styles.socialBtn}
                 >
-                    <Text className="text-[#141414] font-semibold">
+                    <Text style={styles.socialBtnTxt}>
                         {t('continueWithGoogle')}
                     </Text>
                 </Button>
 
                 <Button
                     variant="outline"
-                    className="w-full h-12 rounded-xl border border-gray-200 bg-white"
+                    style={styles.socialBtn}
                 >
-                    <Text className="text-[#141414] font-semibold">
+                    <Text style={styles.socialBtnTxt}>
                         {t('continueWithApple')}
                     </Text>
                 </Button>
             </View>
 
             {/* Sign Up Link */}
-            <View className="flex-row justify-center items-center mt-6 mb-4">
-                <Text className="text-gray-600 text-base">
+            <View style={styles.footerCtn}>
+                <Text style={styles.footerTxt}>
                     {t('noAccount')}{' '}
                 </Text>
                 <Link href="/(auth)/register" asChild>
-                    <Pressable className="py-1">
-                        <Text className="text-[#3569ed] font-bold text-base">
+                    <Pressable style={styles.signUpBtn}>
+                        <Text style={styles.signUpTxt}>
                             {t('signUpNow')}
                         </Text>
                     </Pressable>

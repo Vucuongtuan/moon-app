@@ -2,6 +2,7 @@ import { ThemedText } from "@/src/components/themed-text";
 import { ThemedView } from "@/src/components/themed-view";
 import { useLocale } from "@/src/provider/localeProvider";
 import { Block } from "@/src/types";
+import { styles } from "./NotificationBlock.styles";
 
 
 
@@ -19,7 +20,7 @@ export default function NotificationBlock(props:NotificationBlockProps) {
     const isVN = locale === 'vi'
     return (
         <ThemedView>
-            <ThemedText type="title" className="text-2xl font-semibold">{isVN ? title : title_en}</ThemedText>
+            <ThemedText type="title" style={styles.title}>{isVN ? title : title_en}</ThemedText>
             <ThemedText>{isVN ? description : description_en}</ThemedText>
         </ThemedView>
     )

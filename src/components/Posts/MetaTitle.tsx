@@ -11,6 +11,7 @@ import Animated, {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ThemedText, TypeText } from "../themed-text";
 import { ThemedView } from "../themed-view";
+import PublishedTime from './PublishedTime';
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
@@ -23,10 +24,11 @@ export interface MetaItem {
 interface MetaTitleProps extends ViewProps {
   title: MetaItem;
   desc?: MetaItem;
+  dateTime?: MetaItem;
   stickyScrollY?: SharedValue<number>;
 }
 
-export default function MetaTitle({ title, desc, style, stickyScrollY, ...rest }: MetaTitleProps) {
+export default function MetaTitle({ title, desc, dateTime, style, stickyScrollY, ...rest }: MetaTitleProps) {
   const backgroundColor = useThemeColor({}, 'background');
   const insets = useSafeAreaInsets();
   const colorScheme = useColorScheme();
@@ -41,7 +43,6 @@ export default function MetaTitle({ title, desc, style, stickyScrollY, ...rest }
 
     const STICKY_THRESHOLD = 50;
     
-    // Shadow shows up when fully sticky
     const shadowOpacity = interpolate(
       stickyScrollY.value,
       [STICKY_THRESHOLD - 10, STICKY_THRESHOLD],
@@ -123,6 +124,8 @@ export default function MetaTitle({ title, desc, style, stickyScrollY, ...rest }
     overflow: 'hidden' as const, // Ensure valid type
   };
 
+
+
   if (!stickyScrollY) {
     return (
       <ThemedView style={[{ paddingHorizontal: 16, paddingVertical: 8 }, style]} {...rest}>
@@ -185,6 +188,11 @@ export default function MetaTitle({ title, desc, style, stickyScrollY, ...rest }
           </ThemedText>
         </Animated.View>
       )}
+      {
+        dateTime && dateTime.value && (
+         <PublishedTime date={dateTime.value} />
+        )
+      }
     </Animated.View>
   );
 }

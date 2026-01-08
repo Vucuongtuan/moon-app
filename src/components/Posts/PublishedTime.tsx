@@ -2,10 +2,15 @@ import { useThemeColor } from "@/src/hooks/use-theme-color";
 import { TextStyle, View } from "react-native";
 import { ThemedIcon } from "../themed-icon";
 import { ThemedText } from "../themed-text";
+import { styles } from "./PublishedTime.styles";
 
+interface PublishedTimeProps {
+    date: string;
+    disableIcon?:boolean
+    style?: TextStyle;
+}
 
-
-export default function PublishedTime({date,style}:{date:string,style?:TextStyle}) {
+export default function PublishedTime({date,disableIcon=false,style}:PublishedTimeProps) {
     const theme = useThemeColor({},'subSecondary')
      const formatDate = (dateString: string) => {
         if (!dateString) return '';
@@ -17,8 +22,8 @@ export default function PublishedTime({date,style}:{date:string,style?:TextStyle
         });
     }
     return (
-        <View className="flex-row items-center gap-1.5 pt-2" >
-           <ThemedIcon name="calendar-outline" size={15} color={theme} />
+        <View style={styles.container} >
+           {!disableIcon && <ThemedIcon name="calendar-outline" size={15} color={theme} />}
             <ThemedText type="xsmall" style={{ color: theme, opacity: 0.8, fontSize: 12 ,marginTop:2}}>
                 {formatDate(date)}
             </ThemedText>

@@ -45,9 +45,14 @@ export default function RootLayout() {
             <Stack>
               <Stack.Screen name="index" options={{ headerShown: false }} />
               <Stack.Screen name="(page)/[slug]" options={{ headerShown: false }} />
+              <Stack.Screen name="(posts)/[slug]" options={{ headerShown: false }} />
               <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+              
+              {/* Settings screen - Full screen modal KHÔNG có bottom tabs */}
+              <Stack.Screen name="settings" options={{ headerShown: false }} />
+            
               {/* <Stack.Screen
                 name="modals/product-detail"
                 options={{ presentation: 'modal', title: 'Product Detail' }}

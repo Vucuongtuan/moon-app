@@ -1,23 +1,21 @@
 import { InfoItemType } from "@/src/types";
 import { View } from "react-native";
 import { Text } from "../ui/Text";
-
-
-
+import { styles } from "./InfoList.styles";
 
 export default function InfoItem(props: InfoItemType) {
     const { icon, title, description } = props;
     return (
-        <View className="flex-row items-center gap-8 py-2">
-            <View className="w-1/5 p-4">
+        <View style={styles.itemCtn}>
+            <View style={styles.iconCtn}>
                 {icon && icon()}
             </View>
-            <View className="flex-1">
-                <Text variant={'h2'} className="text-left text-2xl py-0">
+            <View style={styles.contentCtn}>
+                <Text variant={'h2'} style={styles.titleTxt}>
                     {title}
                 </Text>
                 {description && (
-                    <Text variant={'p'} className="text-left text-lg">
+                    <Text variant={'p'} style={styles.descTxt}>
                         {description}
                     </Text>
                 )}

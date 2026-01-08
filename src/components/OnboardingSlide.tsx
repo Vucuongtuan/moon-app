@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, ImageSourcePropType, useWindowDimensions, View } from 'react-native';
 import { Text } from './ui/Text';
+import { styles } from './OnboardingSlide.styles';
+import { useThemeColor } from '@/src/hooks/use-theme-color';
 
 interface OnboardingSlideProps {
     title: string;
@@ -16,11 +18,13 @@ export const OnboardingSlide: React.FC<OnboardingSlideProps> = ({
     children,
 }) => {
     const { width } = useWindowDimensions();
+    const secondaryColor = useThemeColor({}, 'secondary');
+    const secondaryForegroundColor = useThemeColor({}, 'secondaryForeground');
 
     return (
-        <View style={{ width }} className="flex-1 items-center justify-center px-6 pt-10 pb-20">
+        <View style={[styles.container, { width }]}>
             {image && (
-                <View className="flex-1 w-full items-center justify-center mb-8">
+                <View style={styles.imageContainer}>
                     <Image
                         source={image}
                         style={{ width: width * 0.8, height: width * 0.8 }}
@@ -29,11 +33,16 @@ export const OnboardingSlide: React.FC<OnboardingSlideProps> = ({
                 </View>
             )}
 
-            <View className="w-full items-center">
-                <Text variant="h2" className="text-center mb-4 text-secondary">
+            <View style={styles.textContainer}>
+                <Text
+                    variant="h2"
+                    style={[styles.title, { color: secondaryColor }]}
+                >
                     {title}
                 </Text>
-                <Text className="text-center text-secondary-foreground mb-8">
+                <Text
+                    style={[styles.description, { color: secondaryForegroundColor }]}
+                >
                     {description}
                 </Text>
                 {children}

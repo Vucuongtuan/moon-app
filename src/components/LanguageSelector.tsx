@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { cn } from '../utils/cn';
 import { Text } from './ui/Text';
+import { styles } from './LanguageSelector.styles';
+import { useThemeColor } from '@/src/hooks/use-theme-color';
 
 interface LanguageSelectorProps {
     selectedLanguage: 'vi' | 'en';
@@ -12,36 +13,39 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
     selectedLanguage,
     onSelectLanguage,
 }) => {
+    const accentColor = useThemeColor({}, 'accent');
+    const secondaryColor = useThemeColor({}, 'secondary');
+
     return (
-        <View className="flex-row gap-4 mt-4">
+        <View style={styles.container}>
             <TouchableOpacity
                 onPress={() => onSelectLanguage('vi')}
-                className={cn(
-                    "px-6 py-3 rounded-full border",
+                style={[
+                    styles.button,
                     selectedLanguage === 'vi'
-                        ? "bg-accent border-accent"
-                        : "bg-transparent border-secondary"
-                )}
+                        ? { backgroundColor: accentColor, borderColor: accentColor }
+                        : { backgroundColor: 'transparent', borderColor: secondaryColor }
+                ]}
             >
-                <Text className={cn(
-                    selectedLanguage === 'vi' ? "text-white" : "text-secondary"
-                )}>
+                <Text style={[
+                    selectedLanguage === 'vi' ? { color: 'white' } : { color: secondaryColor }
+                ]}>
                     Tiếng Việt 🇻🇳
                 </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={() => onSelectLanguage('en')}
-                className={cn(
-                    "px-6 py-3 rounded-full border",
+                style={[
+                    styles.button,
                     selectedLanguage === 'en'
-                        ? "bg-accent border-accent"
-                        : "bg-transparent border-secondary"
-                )}
+                        ? { backgroundColor: accentColor, borderColor: accentColor }
+                        : { backgroundColor: 'transparent', borderColor: secondaryColor }
+                ]}
             >
-                <Text className={cn(
-                    selectedLanguage === 'en' ? "text-white" : "text-secondary"
-                )}>
+                <Text style={[
+                    selectedLanguage === 'en' ? { color: 'white' } : { color: secondaryColor }
+                ]}>
                     English 🇬🇧
                 </Text>
             </TouchableOpacity>

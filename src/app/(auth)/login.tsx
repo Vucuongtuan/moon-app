@@ -2,6 +2,7 @@ import LoginForm from '@/src/components/Form/LoginForm';
 import { Text } from '@/src/components/ui/Text';
 import { useTranslations } from '@/src/hooks/useTranslations';
 import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { styles } from './login.styles';
 
 export default function LoginScreen() {
     const { t } = useTranslations('auth.login');
@@ -9,23 +10,21 @@ export default function LoginScreen() {
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            className="flex-1"
+            style={styles.ctn}
         >
             <ScrollView
-                className="flex-1 "
-                contentContainerClassName="flex-grow px-6"
+                style={styles.scrollCtn}
+                contentContainerStyle={styles.scrollContentCtn}
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
             >
-                <View className="flex-1 pt-4 pb-8">
+                <View style={styles.mainCtn}>
                     {/* Header */}
-                    <View
-                        className="pt-14 pb-8"
-                    >
-                        <Text className="text-3xl font-bold text-[#141414] mb-2 leading-tight">
+                    <View style={styles.headerCtn}>
+                        <Text style={styles.titleTxt}>
                             {t('title')}
                         </Text>
-                        <Text className="text-sm text-gray-600 leading-relaxed">
+                        <Text style={styles.subtitleTxt}>
                             {t('subtitle')}
                         </Text>
                     </View>

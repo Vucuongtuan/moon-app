@@ -1,11 +1,9 @@
 import { DefaultBlurImage } from "@/src/constants/theme";
-import { cn } from "@/src/utils/cn";
 import { Image, ImageSource } from "expo-image";
 import React from 'react';
-import { Dimensions, ScrollView, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import IntroContent from "./IntroContent";
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+import { styles } from "./IntroStep.styles";
 
 export interface IntroStepData {
     title: string;
@@ -37,35 +35,23 @@ export default function IntroStep({
 
     return (
         <ScrollView
-            style={{ flex: 1 }}
-            contentContainerStyle={{ flexGrow: 1 }}
+            style={styles.scrollCtn}
+            contentContainerStyle={styles.scrollContentCtn}
         >
             {hasImage && (
-                <View style={{ height: SCREEN_HEIGHT * 0.6, position: 'relative' }} >
+                <View style={styles.imageCtn} >
                     <Image
                         source={data.image}
                         placeholder={DefaultBlurImage}
                         contentFit='cover'
                         transition={1000}
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            borderBottomLeftRadius: 32,
-                            borderBottomRightRadius: 32
-                        }}
+                        style={styles.image}
                     />
-
                 </View>
             )}
 
             {/* Content Section */}
-            <View
-
-                className={cn(
-                    'flex-1 justify-between relative',
-                    'px-6 py-8',
-                )}
-            >
+            <View style={styles.contentCtn}>
                 <IntroContent
                     title={data.title}
                     description={data.description}

@@ -7,6 +7,7 @@ import Animated, {
     useAnimatedStyle,
 } from 'react-native-reanimated';
 import { Colors } from '../constants/theme';
+import { styles } from './Pagination.styles';
 
 interface PaginationProps {
     data: any[];
@@ -20,7 +21,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     screenWidth,
 }) => {
     return (
-        <View className="flex-row h-10 justify-center items-center">
+        <View style={styles.container}>
             {data.map((_, i) => {
                 const animatedDotStyle = useAnimatedStyle(() => {
                     const width = interpolate(

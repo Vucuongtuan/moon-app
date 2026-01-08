@@ -5,6 +5,7 @@ import { ThemedIcon } from "../themed-icon";
 import { ThemedView } from "../themed-view";
 import { Input } from "../ui/Input";
 import FlashSearch from './FlashSearch';
+import { styles } from './SearchModel.styles';
 
 export function SearchModal() {
     const [isOpen, setIsOpen] = useState(false);
@@ -33,17 +34,17 @@ export function SearchModal() {
             >
                 <ThemedView style={{ flex: 1 }}>
                     <SafeAreaView style={{ flex: 1 }}>
-                        <View className="flex-row items-center px-4 py-2 gap-3 border-b border-gray-200 dark:border-gray-800">
+                        <View style={[styles.headerCtn, isDark && styles.headerCtnDark]}>
                             <TouchableOpacity onPress={toggleModal}>
                                 <ThemedIcon name="arrow-back" size={24} color={isDark ? 'white' : 'black'} />
                             </TouchableOpacity>
-                            <View className="flex-1">
+                            <View style={styles.inputWrapperCtn}>
                                 <Input
                                     value={keyword}
                                     onChangeText={setKeyword}
                                     placeholder="Search..."
                                     autoFocus
-                                    className="bg-gray-100 dark:bg-gray-800 border-none"
+                                    style={[styles.searchInput, isDark && styles.searchInputDark]}
                                 />
                             </View>
                             {keyword.length > 0 && (
