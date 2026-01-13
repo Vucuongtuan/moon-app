@@ -14,7 +14,7 @@ export interface InfoItemType {
 
 export type Lang = 'en' | 'vi';
 export interface PaginationType<T> {
-    data: T[];
+    docs: T[];
     page: number | undefined;
     limit: number | undefined;
     hasNextPage: boolean;

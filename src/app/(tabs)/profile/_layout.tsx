@@ -1,5 +1,7 @@
-import { Stack } from 'expo-router';
-import { useColorScheme } from 'react-native';
+import { ThemedIcon } from '@/src/components/themed-icon';
+import { Link, Stack } from 'expo-router';
+import { Pressable, useColorScheme, View } from 'react-native';
+import { styles } from './index.styles';
 
 export default function ProfileLayout() {
     const colorSchema = useColorScheme();
@@ -9,17 +11,38 @@ export default function ProfileLayout() {
             screenOptions={{
                 headerTitleAlign: "center",
                 headerTintColor: colorSchema === 'dark' ? "white" : "black",
-                headerBlurEffect: colorSchema === 'dark' ? "dark" : "extraLight",
                 headerShadowVisible: false,
+                headerTransparent:true,
             }}
         >
             <Stack.Screen 
-                name="index" 
+                name="index"
                 options={{ 
-                    title: 'Profile',
-                    headerShown: false
+                    title: "",
+                    headerShown: true,
+                    headerTransparent:true,
+                    headerShadowVisible:false,
+                    headerRight:() => (
+                        <View style={styles.header}>
+                            <Link href="/settings" asChild>
+                        <Pressable>
+                          <View style={{padding:5}}>
+                            <ThemedIcon name="settings" />
+                          </View>
+                        </Pressable>
+                        </Link>
+                            <Link href="/settings" asChild>
+                        <Pressable>
+                          <View style={{padding:5}}>
+                            <ThemedIcon name="settings" />
+                          </View>
+                        </Pressable>
+                        </Link>
+                        </View>
+                    )
                 }} 
             />
+
         </Stack>
     );
 }

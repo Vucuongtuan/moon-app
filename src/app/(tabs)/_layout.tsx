@@ -25,6 +25,7 @@ export default function TabsLayout() {
                 <Label>Home</Label>
                 <Icon sf="house.fill" drawable="custom_home_drawable"  />
             </NativeTabs.Trigger>
+        
             <NativeTabs.Trigger name="cart">
                 <Label>Cart</Label>
                 <Icon sf="cart" drawable="custom_cart_drawable" selectedColor={'red'}/>

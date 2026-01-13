@@ -50,13 +50,15 @@ export default function RootLayout() {
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)" options={{ headerShown: false }} />
               
-              {/* Settings screen - Full screen modal KHÔNG có bottom tabs */}
               <Stack.Screen name="settings" options={{ headerShown: false }} />
-            
-              {/* <Stack.Screen
-                name="modals/product-detail"
-                options={{ presentation: 'modal', title: 'Product Detail' }}
-              /> */}
+                        
+            <Stack.Screen 
+                name="edit-profile" 
+                options={{ 
+                    headerShown: true, 
+                    title: 'Edit Profile',
+                }} 
+            />
             </Stack>
             <StatusBar style={'dark'} />
             <PopUp />

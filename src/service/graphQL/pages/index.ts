@@ -10,7 +10,7 @@ import { gqlFetch } from "@/src/lib/graphQL"
 export const findPageBySlug = async (slug: string) => {
    const [result,err] =  await gqlFetch(
     `
-    query QueryScreens{
+ query QueryScreens {
     Screens(where: { _status: { equals: published }, slug: { equals: "home" } }) {
         docs {
             id
@@ -53,7 +53,6 @@ export const findPageBySlug = async (slug: string) => {
                     title_en
                     description
                     description_en
-                    type
                     id
                     blockName
                     blockType
@@ -109,6 +108,7 @@ export const findPageBySlug = async (slug: string) => {
                         updatedAt
                         slug
                     }
+                    productType: type
                 }
                 ... on MobileContentProps {
                     title
@@ -121,11 +121,120 @@ export const findPageBySlug = async (slug: string) => {
                     blockName
                     blockType
                 }
+                ... on MobilePostsProps {
+                    title
+                    title_en
+                    description
+                    description_en
+                    id
+                    blockName
+                    blockType
+                    posts {
+                        id
+                        title
+                        description
+                        slug
+                        slugLock
+                        content
+                        updatedAt
+                        createdAt
+                        _status
+                        image {
+                            id
+                            alt
+                            caption
+                            blurData
+                            prefix
+                            updatedAt
+                            createdAt
+                            url
+                            thumbnailURL
+                            filename
+                            mimeType
+                            filesize
+                            width
+                            height
+                            focalX
+                            focalY
+                            sizes {
+                                medium {
+                                    url
+                                    width
+                                    height
+                                    mimeType
+                                    filesize
+                                    filename
+                                }
+                            }
+                        }
+                        linkedProducts {
+                            relationTo
+                            value {
+                                ... on Product {
+                                    slug
+                                    id
+                                }
+                            }
+                        }
+                    }
+                    type
+                }
+                ... on MobileFeatureMediaProps {
+                    enableText
+                    title
+                    link
+                    id
+                    blockName
+                    blockType
+                    image {
+                        id
+                        alt
+                        caption
+                        blurData
+                        prefix
+                        updatedAt
+                        createdAt
+                        url
+                        thumbnailURL
+                        filename
+                        mimeType
+                        filesize
+                        width
+                        height
+                        focalX
+                        focalY
+                        sizes {
+                            medium {
+                                url
+                                width
+                                height
+                                mimeType
+                                filesize
+                                filename
+                            }
+                            large {
+                                url
+                                width
+                                height
+                                mimeType
+                                filesize
+                                filename
+                            }
+                        }
+                    }
+                }
+                ... on MobileRichTextProps {
+                    content
+                    id
+                    blockName
+                    blockType
+                }
             }
         }
         limit
     }
 }
+
 
     `,
     {

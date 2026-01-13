@@ -1,19 +1,20 @@
-import { MediaType } from "@/src/types";
 
 export type LexicalNode = {
-  type: string;
-  children?: LexicalNode[];
-  text?: string;
-  format?: number;
-  tag?: string; // h1, h2...
-  url?: string; // link
-  value?: MediaType; // media
-  [key: string]: any; // Cho các prop custom khác
+ type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
 };
 
 export type LexicalRoot = {
-  root: LexicalNode;
-};
+    root: LexicalNode
+}
 
 // Text Format Constants
 export const TEXT_FORMAT_BOLD = 1;

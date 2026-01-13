@@ -19,7 +19,7 @@ export default function NotificationBlock(props:NotificationBlockProps) {
     const {locale} = useLocale()
     const isVN = locale === 'vi'
     return (
-        <ThemedView>
+        <ThemedView style={styles.ctn}>
             <ThemedText type="title" style={styles.title}>{isVN ? title : title_en}</ThemedText>
             <ThemedText>{isVN ? description : description_en}</ThemedText>
         </ThemedView>

@@ -6,4 +6,7 @@ export const styles = StyleSheet.create({
     lineHeight: 32,
     fontWeight: "600", // font-semibold
   },
+  ctn:{
+    paddingHorizontal:20
+  }
 });

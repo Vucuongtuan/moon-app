@@ -3,12 +3,19 @@
 import React from "react";
 import { ThemedView } from "../themed-view";
 import ContentBlock from "./blocks/Content";
+import FeatureMedia from "./blocks/FeatureMedia/FeatureMedia";
 import NotificationBlock from "./blocks/Notification";
+import { ProductArchiveBlock } from "./blocks/ProductArchive";
+import { RichText } from "./blocks/RIchText";
 
-const blockComponents = {
+const blockComponents:Record<string,React.FC<any>> = {
  "mobile-notification":NotificationBlock,
- "mobile-content":ContentBlock
+ "mobile-content":ContentBlock,
+ "mobile-product-archives":ProductArchiveBlock,
+ "mobile-feature-media":FeatureMedia,
+ "mobile-rich-text":RichText
 };
+
 export const Sections: React.FC<{
   blocks: Record<string, any>[];
 }> = (props) => {
@@ -29,8 +36,8 @@ export const Sections: React.FC<{
                 <ThemedView
                   aria-label={blockName || blockType}
                   key={`${blockType}-${idx}`}
+                  data-block={`${blockType}`}
                 >
-                  { }
                   {/* @ts-ignore - weird type mismatch here */}
                   <Block
                     {...block}

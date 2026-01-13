@@ -61,7 +61,7 @@
         "expo-video",
         {
           "supportsBackgroundPlayblack": true,
-          "supportsPictureInPicture": true,
+          "supportsPictureInPicture": true
         }
       ],
       [
@@ -74,7 +74,33 @@
           "behavior": "inset-swipe",
           "position": "relative"
         }
-      ]
+      ],
+      [
+
+      "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/Newsreader_36pt-MediumItalic.ttf"
+          ],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Newsreader",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/Newsreader_36pt-MediumItalic.ttf",
+                    "weight": 500,
+                    "style": "italic"
+                  },
+                ]
+              }
+            ]
+          },
+          "ios": {
+            "fonts": ["./assets/fonts/Newsreader_36pt-MediumItalicd.ttf"]
+          }
+        }
+      ],
     ],
     "experiments": {
       "typedRoutes": true,

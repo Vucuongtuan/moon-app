@@ -1,4 +1,3 @@
-import HeaderSection from '@/src/components/Header/HeaderSection';
 import { Sections } from '@/src/components/Sections/RenderSections';
 import { ThemedText } from '@/src/components/themed-text';
 import { ThemedView } from '@/src/components/themed-view';
@@ -7,7 +6,7 @@ import { findPageBySlug } from '@/src/service/graphQL/pages';
 import { useQuery } from '@tanstack/react-query';
 import * as Haptics from 'expo-haptics';
 import { useRef } from 'react';
-import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, ScrollView } from 'react-native';
+import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styles } from './index.styles';
 
@@ -19,9 +18,9 @@ export default function HomeScreen() {
         queryKey: ['screen', 'home'],
         queryFn: async () => findPageBySlug('home')
     });
-    const doc = data?.Screens?.docs?.[0];
+    const doc = data?.data?.Screens?.docs?.[0];
+    console.log({data,isFetching,isError})
     const isHapticTriggered = useRef(false);
-
     const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
         const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
         const PULL_THRESHOLD = 70;
@@ -55,13 +54,11 @@ export default function HomeScreen() {
     );
     return (
         <ThemedView style={[styles.ctn, { paddingTop: insets.top }]}>
-            <HeaderSection />
             {(isFetching && !doc) ? renderLoading() : 
              (isError || (!isFetching && !doc)) ? renderError() : (
                 <ScrollView
                     style={styles.scrollCtn}
                     contentContainerStyle={{
-                        paddingHorizontal: 20,
                         paddingTop: 10,
                         paddingBottom: insets.bottom + 20
                     }}
@@ -74,6 +71,12 @@ export default function HomeScreen() {
                     onScroll={handleScroll}
                     scrollEventThrottle={16}
                 >
+                    <View>
+                        <Text>
+                        Moon co.
+
+                        </Text>
+                    </View>
                     <Sections blocks={doc?.sections || []} />
                 </ScrollView>
             )}
