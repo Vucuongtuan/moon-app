@@ -1,7 +1,8 @@
 import { useThemeColor } from '@/src/hooks/use-theme-color';
+import { useTranslations } from '@/src/hooks/useTranslations';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import React, { forwardRef } from 'react';
-import { Platform, Pressable, TextInput, useColorScheme, View, ViewStyle } from 'react-native';
+import { Pressable, TextInput, View, ViewStyle } from 'react-native';
 import { Text } from './Text';
 import { styles } from './Input.styles';
 
@@ -18,9 +19,9 @@ type InputProps = React.ComponentProps<typeof TextInput> & {
 const Input = forwardRef<TextInput, InputProps>(
     ({ style, variant = 'default', label, error, containerStyle, type, ...props }, ref) => {
         const [showPass, setShowPass] = React.useState(false);
-        const theme = useColorScheme();
+        const { t } = useTranslations('common');
         const isPassword = type === 'password';
-        const color = useThemeColor({ }, 'text');
+        const iconColor = useThemeColor({}, 'icon');
         
         // Determine input style based on variant and error state
         const inputStyle = [
@@ -47,11 +48,13 @@ const Input = forwardRef<TextInput, InputProps>(
                     <Pressable
                         onPress={() => setShowPass((prev) => !prev)}
                         style={styles.passwordToggleBtn}
+                        accessibilityRole="button"
+                        accessibilityLabel={showPass ? t('hidePassword') : t('showPassword')}
                     >
                         {showPass ? (
-                            <AntDesign name="eye-invisible" size={24} color="black" />
+                            <AntDesign name="eye-invisible" size={24} color={iconColor} />
                         ) : (
-                            <AntDesign name="eye" size={24} color="black" />
+                            <AntDesign name="eye" size={24} color={iconColor} />
                         )}
                     </Pressable>
                 )}
