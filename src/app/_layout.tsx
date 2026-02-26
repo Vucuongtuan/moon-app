@@ -6,6 +6,7 @@ import 'react-native-reanimated';
 // -- css
 import { ThemedView } from '../components/themed-view';
 // import { useCheckOnboarding } from '../hooks/useCheckOnboarding';
+import useAuth from '../stores/auth';
 import PopUp from '../components/popUp';
 import { LocaleProvider } from '../provider/localeProvider';
 import TanStackProvider from '../provider/tanStackProvider';
@@ -31,6 +32,12 @@ export const unstable_settings = {
 export default function RootLayout() {
   const pathname = usePathname();
   const isActiveHeader = pathname === '/(tabs)/settings' || pathname === '/';
+  const { fetchMe } = useAuth();
+
+  useEffect(() => {
+      fetchMe();
+  }, [fetchMe]);
+
   // Dev mode: comment để không auto-redirect
   // const checking = useCheckOnboarding();
   // if (checking) {
