@@ -6,80 +6,85 @@ import { findPageBySlug } from '@/src/service/graphQL/pages';
 import { useQuery } from '@tanstack/react-query';
 import * as Haptics from 'expo-haptics';
 import { useRef } from 'react';
-import { ActivityIndicator, NativeScrollEvent, NativeSyntheticEvent, RefreshControl, ScrollView, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  RefreshControl,
+  ScrollView,
+  Text,
+  View,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { styles } from './index.styles';
 
 export default function HomeScreen() {
-    const locale = useLocale();
+  const locale = useLocale();
 
-    const insets = useSafeAreaInsets();
-    const { data, isFetching, refetch, isError } = useQuery({
-        queryKey: ['screen', 'home'],
-        queryFn: async () => findPageBySlug('home')
-    });
-    const doc = data?.data?.Screens?.docs?.[0];
-    console.log({data,isFetching,isError})
-    const isHapticTriggered = useRef(false);
-    const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-        const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
-        const PULL_THRESHOLD = 70;
+  const insets = useSafeAreaInsets();
+  const { data, isFetching, refetch, isError } = useQuery({
+    queryKey: ['screen', 'home'],
+    queryFn: async () => findPageBySlug('home'),
+  });
+  const doc = data?.data?.Screens?.docs?.[0];
 
-        const isOverScrollTop = contentOffset.y < -PULL_THRESHOLD;
+  const isHapticTriggered = useRef(false);
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
+    const PULL_THRESHOLD = 70;
 
-        const isOverScrollBottom = contentOffset.y + layoutMeasurement.height > contentSize.height + PULL_THRESHOLD;
+    const isOverScrollTop = contentOffset.y < -PULL_THRESHOLD;
 
-        if ((isOverScrollTop || isOverScrollBottom) && !isHapticTriggered.current) {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-            isHapticTriggered.current = true;
-        }
+    const isOverScrollBottom =
+      contentOffset.y + layoutMeasurement.height >
+      contentSize.height + PULL_THRESHOLD;
 
-        if (!isOverScrollTop && !isOverScrollBottom && isHapticTriggered.current) {
-            isHapticTriggered.current = false;
-        }
-    };
+    if ((isOverScrollTop || isOverScrollBottom) && !isHapticTriggered.current) {
+      Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      isHapticTriggered.current = true;
+    }
 
-    const renderLoading = () => (
-        <ThemedView style={styles.loadingCtn}>
-            <ActivityIndicator size="large" />
-        </ThemedView>
-    );
+    if (!isOverScrollTop && !isOverScrollBottom && isHapticTriggered.current) {
+      isHapticTriggered.current = false;
+    }
+  };
 
-    const renderError = () => (
-        <ThemedView  style={styles.errorCtn}>
-            <ThemedText >
-                Không thể tải dữ liệu. Vui lòng thử lại.
-            </ThemedText>
-        </ThemedView>
-    );
-    return (
-        <ThemedView style={[styles.ctn, { paddingTop: insets.top }]}>
-            {(isFetching && !doc) ? renderLoading() : 
-             (isError || (!isFetching && !doc)) ? renderError() : (
-                <ScrollView
-                    style={styles.scrollCtn}
-                    contentContainerStyle={{
-                        paddingTop: 10,
-                        paddingBottom: insets.bottom + 20
-                    }}
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={isFetching}
-                            onRefresh={refetch}
-                        />
-                    }
-                    onScroll={handleScroll}
-                    scrollEventThrottle={16}
-                >
-                    <View>
-                        <Text>
-                        Moon co.
+  const renderLoading = () => (
+    <ThemedView style={styles.loadingCtn}>
+      <ActivityIndicator size="large" />
+    </ThemedView>
+  );
 
-                        </Text>
-                    </View>
-                    <Sections blocks={doc?.sections || []} />
-                </ScrollView>
-            )}
-        </ThemedView>
-    );
+  const renderError = () => (
+    <ThemedView style={styles.errorCtn}>
+      <ThemedText>Không thể tải dữ liệu. Vui lòng thử lại.</ThemedText>
+    </ThemedView>
+  );
+  return (
+    <ThemedView style={[styles.ctn, { paddingTop: insets.top }]}>
+      {isFetching && !doc ? (
+        renderLoading()
+      ) : isError || (!isFetching && !doc) ? (
+        renderError()
+      ) : (
+        <ScrollView
+          style={styles.scrollCtn}
+          contentContainerStyle={{
+            paddingTop: 10,
+            paddingBottom: insets.bottom + 20,
+          }}
+          refreshControl={
+            <RefreshControl refreshing={isFetching} onRefresh={refetch} />
+          }
+          onScroll={handleScroll}
+          scrollEventThrottle={16}
+        >
+          <View>
+            <Text>Moon co.</Text>
+          </View>
+          <Sections blocks={doc?.sections || []} />
+        </ScrollView>
+      )}
+    </ThemedView>
+  );
 }

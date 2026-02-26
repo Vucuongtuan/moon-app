@@ -1,18 +1,15 @@
-import { gqlFetch } from "@/src/lib/graphQL"
+import { gqlFetch } from '@/src/lib/graphQL';
 
-import slugify from "slugify"
+import slugify from 'slugify';
 
-
-
-
-export const findSearchByKeyword = async (keyword:string,locale:string) =>{
-    const normalizedKeyword = slugify(keyword,{
-        replacement: ' ',
-        lower: true,
-        locale: locale
-    })
-   const [result,err] =  await gqlFetch(
-        `
+export const findSearchByKeyword = async (keyword: string, locale: string) => {
+  const normalizedKeyword = slugify(keyword, {
+    replacement: ' ',
+    lower: true,
+    locale: locale,
+  });
+  const [result, err] = await gqlFetch(
+    `
         query Searches {
     Searches(where: { OR: [
     { _title: { like: "${normalizedKeyword}" } },
@@ -35,16 +32,14 @@ export const findSearchByKeyword = async (keyword:string,locale:string) =>{
 }
 
         `,
-        {
-            variables:{
-                keyword:normalizedKeyword,
-                locale:locale
-            }
-        }
-    )
-    console.log("==========================>")
-    console.log({result:result.data})
-    if(err) return null
-    return result?.data?.Searches 
+    {
+      variables: {
+        keyword: normalizedKeyword,
+        locale: locale,
+      },
+    }
+  );
 
-} 
+  if (err) return null;
+  return result?.data?.Searches;
+};
