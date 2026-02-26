@@ -13,11 +13,13 @@ export default function IndexScreen() {
         { title: "Register", path: "/register" },
         { title: "Cart", path: "/cart" },
         { title: "Profile", path: "/profile" },
-        { title: "Product Detail (Modal)", path: "/modals/product-detail" },
+        { title: "Product Detail (Modal)", path: "/product-detail" },
+        { title: "Modal Example", path: "/modal" },
         { title: "Terms", path: "/terms" },
         { title: "Privacy Policy", path: "/privacy-policy" },
         { title: "Tabs", path: "/(tabs)" },
-        {title : "Posts List", path: "/(posts)"},
+        { title: "Posts List", path: "/posts" },
+        { title: "Search", path: "/search" },
     ];
 
 

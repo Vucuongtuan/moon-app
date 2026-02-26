@@ -1,4 +1,4 @@
-import { Stack, usePathname } from 'expo-router';
+import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
@@ -29,8 +29,6 @@ export const unstable_settings = {
 // });
 
 export default function RootLayout() {
-  const pathname = usePathname();
-  const isActiveHeader = pathname === '/(tabs)/settings' || pathname === '/';
   // Dev mode: comment để không auto-redirect
   // const checking = useCheckOnboarding();
   // if (checking) {
@@ -44,21 +42,12 @@ export default function RootLayout() {
           <ThemedView style={{ flex: 1 }} >
             <Stack>
               <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(page)/[slug]" options={{ headerShown: false }} />
-              <Stack.Screen name="(posts)/[slug]" options={{ headerShown: false }} />
               <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-              
-              <Stack.Screen name="settings" options={{ headerShown: false }} />
-                        
-            <Stack.Screen 
-                name="edit-profile" 
-                options={{ 
-                    headerShown: true, 
-                    title: 'Edit Profile',
-                }} 
-            />
+              <Stack.Screen name="(public)" options={{ headerShown: false }} />
+              <Stack.Screen name="(user)" options={{ headerShown: false }} />
+              <Stack.Screen name="(modals)" options={{ headerShown: false }} />
             </Stack>
             <StatusBar style={'dark'} />
             <PopUp />
