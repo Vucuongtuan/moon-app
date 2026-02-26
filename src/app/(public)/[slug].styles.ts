@@ -1,17 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  // Common Container
   ctn: {
     flex: 1,
   },
-  
-  // Post Styles
-  postScrollCtn: {
-    flex: 1,
-  },
-  
-  // Page Styles
   pageLoadingCtn: {
     padding: 16,
   },
