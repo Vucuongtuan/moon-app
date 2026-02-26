@@ -12,7 +12,8 @@
     "lint": "expo lint",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "format:all": "prettier --write ."
+    "format:all": "prettier --write .",
+    "test": "bun test"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
