@@ -2,17 +2,38 @@ import { ThemedText } from '@/src/components/themed-text';
 import { ThemedView } from '@/src/components/themed-view';
 import useAuth from '@/src/stores/auth';
 import { Ionicons } from '@expo/vector-icons';
-import { Link } from 'expo-router';
+import { Link, Stack } from 'expo-router';
 import { Pressable, ScrollView, Text, useColorScheme, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { styles } from './index.styles';
+import { styles } from './profile.styles';
+import { ThemedIcon } from '@/src/components/themed-icon';
 
 export default function ProfileScreen() {
     const insets = useSafeAreaInsets();
     const {status,user} = useAuth();
     const colorScheme = useColorScheme();
+
     return (
         <ThemedView style={styles.ctn}>
+             <Stack.Screen
+                options={{
+                    title: "",
+                    headerShown: true,
+                    headerTransparent:true,
+                    headerShadowVisible:false,
+                    headerRight:() => (
+                        <View style={styles.header}>
+                            <Link href="/(user)/settings" asChild>
+                                <Pressable>
+                                    <View style={{padding:5}}>
+                                        <ThemedIcon name="settings" />
+                                    </View>
+                                </Pressable>
+                            </Link>
+                        </View>
+                    )
+                }}
+            />
            <ScrollView style={{paddingTop: insets.top}}>
             {status !== 'loggedIn' || !user ? (
                 <View style={styles.authContainer}>
@@ -69,7 +90,7 @@ export default function ProfileScreen() {
                { backgroundColor: colorScheme === 'dark' ? '#1C1C1E' : '#FFFFFF' }
            ]}>
                {/* Edit Profile */}
-               <Link href="/edit-profile" asChild>
+               <Link href="/(user)/edit-profile" asChild>
                    <Pressable style={styles.menuItem}>
                        <View style={styles.menuItemLeft}>
                            <Ionicons 
@@ -208,7 +229,7 @@ export default function ProfileScreen() {
                    </Pressable>
                </Link>
 
-               <Link href="/settings" asChild>
+               <Link href="/(user)/settings" asChild>
                    <Pressable style={styles.menuItem}>
                        <View style={styles.menuItemLeft}>
                            <Ionicons 

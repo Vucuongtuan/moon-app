@@ -9,15 +9,15 @@ export default function IndexScreen() {
     const [path, setPath] = useState("");
 
     const screens = [
-        { title: "Login", path: "/login" },
-        { title: "Register", path: "/register" },
-        { title: "Cart", path: "/cart" },
-        { title: "Profile", path: "/profile" },
-        { title: "Product Detail (Modal)", path: "/modals/product-detail" },
+        { title: "Login", path: "/(auth)/login" },
+        { title: "Register", path: "/(auth)/register" },
+        { title: "Tabs (Home)", path: "/(tabs)" },
+        { title: "Product Detail (Modal)", path: "/(modals)/product-detail" },
+        { title: "Settings", path: "/(user)/settings" },
+        { title: "Edit Profile", path: "/(user)/edit-profile" },
         { title: "Terms", path: "/terms" },
         { title: "Privacy Policy", path: "/privacy-policy" },
-        { title: "Tabs", path: "/(tabs)" },
-        {title : "Posts List", path: "/(posts)"},
+        { title: "Posts List", path: "/(tabs)/posts" },
     ];
 
 
