@@ -2,6 +2,7 @@ import { Stack, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
+import { useEffect } from 'react';
 
 // -- css
 import { ThemedView } from '../components/themed-view';
@@ -51,21 +52,12 @@ export default function RootLayout() {
           <ThemedView style={{ flex: 1 }} >
             <Stack>
               <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(page)/[slug]" options={{ headerShown: false }} />
-              <Stack.Screen name="(posts)/[slug]" options={{ headerShown: false }} />
+              <Stack.Screen name="(public)" options={{ headerShown: false }} />
               <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-              
-              <Stack.Screen name="settings" options={{ headerShown: false }} />
-                        
-            <Stack.Screen 
-                name="edit-profile" 
-                options={{ 
-                    headerShown: true, 
-                    title: 'Edit Profile',
-                }} 
-            />
+              <Stack.Screen name="(user)" options={{ headerShown: false }} />
+              <Stack.Screen name="(modals)" options={{ headerShown: false, presentation: 'modal' }} />
             </Stack>
             <StatusBar style={'dark'} />
             <PopUp />
