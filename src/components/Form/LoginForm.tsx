@@ -69,7 +69,11 @@ export default function LoginForm() {
             {/* Forgot Password */}
             <View style={styles.forgotPwdCtn}>
                 <Link href="/(auth)/forgot-password" asChild>
-                    <Pressable style={styles.forgotPwdBtn}>
+                    <Pressable
+                        style={styles.forgotPwdBtn}
+                        accessibilityRole="link"
+                        accessibilityLabel={t('forgotPassword')}
+                    >
                         <Text style={styles.forgotPwdTxt}>
                             {t('forgotPassword')}
                         </Text>
@@ -126,7 +130,11 @@ export default function LoginForm() {
                     {t('noAccount')}{' '}
                 </Text>
                 <Link href="/(auth)/register" asChild>
-                    <Pressable style={styles.signUpBtn}>
+                    <Pressable
+                        style={styles.signUpBtn}
+                        accessibilityRole="link"
+                        accessibilityLabel={t('signUpNow')}
+                    >
                         <Text style={styles.signUpTxt}>
                             {t('signUpNow')}
                         </Text>
