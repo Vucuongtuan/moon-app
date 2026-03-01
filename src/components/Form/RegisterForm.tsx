@@ -148,7 +148,11 @@ export default function RegisterForm() {
       <View style={styles.footerCtn}>
         <Text style={styles.footerTxt}>{t('haveAccount')} </Text>
         <Link href="/(auth)/login" asChild>
-          <Pressable style={styles.signInBtn}>
+          <Pressable
+            style={styles.signInBtn}
+            accessibilityRole="link"
+            accessibilityLabel={t('signInNow')}
+          >
             <Text style={styles.signInTxt}>{t('signInNow')}</Text>
           </Pressable>
         </Link>
