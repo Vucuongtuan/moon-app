@@ -23,7 +23,7 @@ export default function ProfileScreen() {
                     headerShadowVisible:false,
                     headerRight:() => (
                         <View style={styles.header}>
-                            <Link href="/(user)/settings" asChild>
+                            <Link href="/settings" asChild>
                                 <Pressable>
                                     <View style={{padding:5}}>
                                         <ThemedIcon name="settings" />
@@ -38,13 +38,13 @@ export default function ProfileScreen() {
             {status !== 'loggedIn' || !user ? (
                 <View style={styles.authContainer}>
                     <View style={styles.authButtons}>
-                        <Link href="/(auth)/login" asChild>
+                        <Link href="/login" asChild>
                             <Pressable style={styles.loginButton}>
                                 <Text style={styles.loginButtonText}>Login</Text>
                             </Pressable>
                         </Link>
                         
-                        <Link href="/(auth)/register" asChild>
+                        <Link href="/register" asChild>
                             <Pressable style={styles.signupButton}>
                                 <Text style={[
                                     styles.signupButtonText,
@@ -90,7 +90,7 @@ export default function ProfileScreen() {
                { backgroundColor: colorScheme === 'dark' ? '#1C1C1E' : '#FFFFFF' }
            ]}>
                {/* Edit Profile */}
-               <Link href="/(user)/edit-profile" asChild>
+               <Link href="/edit-profile" asChild>
                    <Pressable style={styles.menuItem}>
                        <View style={styles.menuItemLeft}>
                            <Ionicons 
@@ -229,7 +229,7 @@ export default function ProfileScreen() {
                    </Pressable>
                </Link>
 
-               <Link href="/(user)/settings" asChild>
+               <Link href="/settings" asChild>
                    <Pressable style={styles.menuItem}>
                        <View style={styles.menuItemLeft}>
                            <Ionicons 

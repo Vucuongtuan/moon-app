@@ -50,13 +50,8 @@ export default function RootLayout() {
       <TanStackProvider>
         <LocaleProvider>
           <ThemedView style={{ flex: 1 }} >
-            <Stack>
-              <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(pages)" options={{ headerShown: false }} />
-              <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-              <Stack.Screen name="(modals)" options={{ headerShown: false, presentation: 'modal' }} />
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(modals)" options={{ presentation: 'modal' }} />
             </Stack>
             <StatusBar style={'dark'} />
             <PopUp />
