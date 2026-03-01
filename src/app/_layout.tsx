@@ -52,11 +52,10 @@ export default function RootLayout() {
           <ThemedView style={{ flex: 1 }} >
             <Stack>
               <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(public)" options={{ headerShown: false }} />
+              <Stack.Screen name="(pages)" options={{ headerShown: false }} />
               <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
               <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-              <Stack.Screen name="(user)" options={{ headerShown: false }} />
               <Stack.Screen name="(modals)" options={{ headerShown: false, presentation: 'modal' }} />
             </Stack>
             <StatusBar style={'dark'} />
