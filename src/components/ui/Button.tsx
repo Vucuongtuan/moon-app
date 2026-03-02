@@ -63,6 +63,7 @@ function Button({ style, variant = 'default', size = 'default', ...props }: Butt
         <Pressable
             role="button"
             {...props}
+            accessibilityState={{ disabled: props.disabled, ...props.accessibilityState }}
             style={({ pressed }) => getContainerStyle(pressed)}
         >
             {({ pressed }) => (
