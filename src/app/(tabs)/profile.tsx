@@ -24,7 +24,10 @@ export default function ProfileScreen() {
                     headerRight:() => (
                         <View style={styles.header}>
                             <Link href="/settings" asChild>
-                                <Pressable>
+                                <Pressable
+                                    accessibilityRole="link"
+                                    accessibilityLabel="Settings"
+                                >
                                     <View style={{padding:5}}>
                                         <ThemedIcon name="settings" />
                                     </View>
@@ -39,13 +42,21 @@ export default function ProfileScreen() {
                 <View style={styles.authContainer}>
                     <View style={styles.authButtons}>
                         <Link href="/login" asChild>
-                            <Pressable style={styles.loginButton}>
+                            <Pressable
+                                style={styles.loginButton}
+                                accessibilityRole="link"
+                                accessibilityLabel="Login"
+                            >
                                 <Text style={styles.loginButtonText}>Login</Text>
                             </Pressable>
                         </Link>
                         
                         <Link href="/register" asChild>
-                            <Pressable style={styles.signupButton}>
+                            <Pressable
+                                style={styles.signupButton}
+                                accessibilityRole="link"
+                                accessibilityLabel="Sign Up"
+                            >
                                 <Text style={[
                                     styles.signupButtonText,
                                     { color: colorScheme === 'dark' ? '#FFFFFF' : '#007AFF' }
@@ -91,7 +102,11 @@ export default function ProfileScreen() {
            ]}>
                {/* Edit Profile */}
                <Link href="/edit-profile" asChild>
-                   <Pressable style={styles.menuItem}>
+                   <Pressable
+                       style={styles.menuItem}
+                       accessibilityRole="link"
+                       accessibilityLabel="Edit Profile"
+                   >
                        <View style={styles.menuItemLeft}>
                            <Ionicons 
                                name="person-outline" 
@@ -109,7 +124,11 @@ export default function ProfileScreen() {
                {/* Addresses - Disabled if not logged in */}
                {status === 'loggedIn' && user ? (
                    <Link href="/addresses" asChild>
-                       <Pressable style={styles.menuItem}>
+                       <Pressable
+                           style={styles.menuItem}
+                           accessibilityRole="link"
+                           accessibilityLabel="Addresses"
+                       >
                            <View style={styles.menuItemLeft}>
                                <Ionicons 
                                    name="location-outline" 
@@ -142,7 +161,11 @@ export default function ProfileScreen() {
                {/* Payment Methods - Disabled if not logged in */}
                {status === 'loggedIn' && user ? (
                    <Link href="/payment-methods" asChild>
-                       <Pressable style={styles.menuItem}>
+                       <Pressable
+                           style={styles.menuItem}
+                           accessibilityRole="link"
+                           accessibilityLabel="Payment Methods"
+                       >
                            <View style={styles.menuItemLeft}>
                                <Ionicons 
                                    name="card-outline" 
@@ -175,7 +198,11 @@ export default function ProfileScreen() {
                {/* Wishlist - Disabled if not logged in */}
                {status === 'loggedIn' && user ? (
                    <Link href="/wishlist" asChild>
-                       <Pressable style={styles.menuItem}>
+                       <Pressable
+                           style={styles.menuItem}
+                           accessibilityRole="link"
+                           accessibilityLabel="Wishlist"
+                       >
                            <View style={styles.menuItemLeft}>
                                <Ionicons 
                                    name="heart-outline" 
@@ -211,7 +238,11 @@ export default function ProfileScreen() {
                ]} />
 
                <Link href="/help" asChild>
-                   <Pressable style={styles.menuItem}>
+                   <Pressable
+                       style={styles.menuItem}
+                       accessibilityRole="link"
+                       accessibilityLabel="Help & Support"
+                   >
                        <View style={styles.menuItemLeft}>
                            <Ionicons 
                                name="help-circle-outline" 
@@ -230,7 +261,11 @@ export default function ProfileScreen() {
                </Link>
 
                <Link href="/settings" asChild>
-                   <Pressable style={styles.menuItem}>
+                   <Pressable
+                       style={styles.menuItem}
+                       accessibilityRole="link"
+                       accessibilityLabel="Settings"
+                   >
                        <View style={styles.menuItemLeft}>
                            <Ionicons 
                                name="settings-outline" 
