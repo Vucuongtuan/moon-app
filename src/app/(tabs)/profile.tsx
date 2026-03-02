@@ -2,28 +2,49 @@ import { ThemedText } from '@/src/components/themed-text';
 import { ThemedView } from '@/src/components/themed-view';
 import useAuth from '@/src/stores/auth';
 import { Ionicons } from '@expo/vector-icons';
-import { Link } from 'expo-router';
+import { Link, Stack } from 'expo-router';
 import { Pressable, ScrollView, Text, useColorScheme, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { styles } from './index.styles';
+import { styles } from './profile.styles';
+import { ThemedIcon } from '@/src/components/themed-icon';
 
 export default function ProfileScreen() {
     const insets = useSafeAreaInsets();
     const {status,user} = useAuth();
     const colorScheme = useColorScheme();
+
     return (
         <ThemedView style={styles.ctn}>
+             <Stack.Screen
+                options={{
+                    title: "",
+                    headerShown: true,
+                    headerTransparent:true,
+                    headerShadowVisible:false,
+                    headerRight:() => (
+                        <View style={styles.header}>
+                            <Link href="/settings" asChild>
+                                <Pressable>
+                                    <View style={{padding:5}}>
+                                        <ThemedIcon name="settings" />
+                                    </View>
+                                </Pressable>
+                            </Link>
+                        </View>
+                    )
+                }}
+            />
            <ScrollView style={{paddingTop: insets.top}}>
             {status !== 'loggedIn' || !user ? (
                 <View style={styles.authContainer}>
                     <View style={styles.authButtons}>
-                        <Link href="/(auth)/login" asChild>
+                        <Link href="/login" asChild>
                             <Pressable style={styles.loginButton}>
                                 <Text style={styles.loginButtonText}>Login</Text>
                             </Pressable>
                         </Link>
                         
-                        <Link href="/(auth)/register" asChild>
+                        <Link href="/register" asChild>
                             <Pressable style={styles.signupButton}>
                                 <Text style={[
                                     styles.signupButtonText,

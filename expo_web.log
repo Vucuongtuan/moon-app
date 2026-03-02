@@ -1,0 +1,99 @@
+
+> moon-co@1.0.0 web /app
+> expo start --web
+
+env: load .env
+env: export EXPO_PUBLIC_URL_API
+Starting project at /app
+Using src/app as the root directory for Expo Router.
+React Compiler enabled
+Starting Metro Bundler
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+Web node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░ 89.7% (1632/1748)
+λ node_modules/expo-router/node/render.js ▓▓▓▓▓▓▓▓▓▓▓▓▓░░░ 86.8% (1574/1689)
+λ Bundled 3828ms node_modules/expo-router/node/render.js (1969 modules)
+λ  WARN  Route "./(auth)/auth.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(auth)/forgot-password.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+"shadow*" style props are deprecated. Use "boxShadow".
+λ  WARN  Route "./(auth)/login.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(auth)/register.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(onboarding)/index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(tabs)/cart.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(tabs)/index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(tabs)/profile/index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./[type]/[slug].styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./modals/product-detail.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  [Layout children]: No route named "(page)/[slug]" exists in nested children: [
+  '+not-found',
+  'index',
+  'modal',
+  '(auth)',
+  '(onboarding)',
+  '(tabs)',
+  '[type]/[slug]',
+  'edit-profile',
+  'modals/product-detail',
+  'settings'
+]
+λ  WARN  [Layout children]: No route named "(posts)/[slug]" exists in nested children: [
+  '+not-found',
+  'index',
+  'modal',
+  '(auth)',
+  '(onboarding)',
+  '(tabs)',
+  '[type]/[slug]',
+  'edit-profile',
+  'modals/product-detail',
+  'settings'
+]
+λ  LOG  { data: undefined, isFetching: false, isError: false }
+λ  WARN  props.pointerEvents is deprecated. Use style.pointerEvents
+Web node_modules/expo-router/entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (1960/1960)
+Web Bundled 7564ms node_modules/expo-router/entry.js (1960 modules)
+Web Bundled 1223ms node_modules/expo-router/entry.js (1869 modules)
+Web node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+λ Bundled 94ms node_modules/expo-router/node/render.js (1 module)
+λ  WARN  Route "./(auth)/auth.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(auth)/forgot-password.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+"shadow*" style props are deprecated. Use "boxShadow".
+λ  WARN  Route "./(auth)/login.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(auth)/register.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(onboarding)/index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(tabs)/cart.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(tabs)/index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./(tabs)/profile/index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./[type]/[slug].styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./index.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  Route "./modals/product-detail.styles.ts" is missing the required default export. Ensure a React component is exported as default.
+λ  WARN  [Layout children]: No route named "(page)/[slug]" exists in nested children: [
+  '+not-found',
+  'index',
+  'modal',
+  '(auth)',
+  '(onboarding)',
+  '(tabs)',
+  '[type]/[slug]',
+  'edit-profile',
+  'modals/product-detail',
+  'settings'
+]
+λ  WARN  [Layout children]: No route named "(posts)/[slug]" exists in nested children: [
+  '+not-found',
+  'index',
+  'modal',
+  '(auth)',
+  '(onboarding)',
+  '(tabs)',
+  '[type]/[slug]',
+  'edit-profile',
+  'modals/product-detail',
+  'settings'
+]
+λ  LOG  { data: undefined, isFetching: false, isError: false }
+λ  WARN  props.pointerEvents is deprecated. Use style.pointerEvents
+Web node_modules/expo-router/entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Web Bundled 949ms node_modules/expo-router/entry.js (1 module)

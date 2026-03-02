@@ -2,7 +2,7 @@ import { ThemedView } from "@/src/components/themed-view";
 import { useTranslations } from "@/src/hooks/useTranslations";
 import { Link, Slot } from "expo-router";
 import { Text, View } from "react-native";
-import { styles } from "./_layout.styles";
+import { styles } from "./auth.styles";
 
 export default function AuthLayout() {
     const { t } = useTranslations('auth')

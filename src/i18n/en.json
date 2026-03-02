@@ -1,4 +1,8 @@
 {
+    "common": {
+        "showPassword": "Show password",
+        "hidePassword": "Hide password"
+    },
     "onboading": {
         "title": "Welcome to Moon co.",
         "description": "The best place to buy your favorite products.",

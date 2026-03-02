@@ -1,4 +1,8 @@
 {
+    "common": {
+        "showPassword": "Hiện mật khẩu",
+        "hidePassword": "Ẩn mật khẩu"
+    },
     "onboading": {
         "title": "Chào mừng đến với Moon co.",
         "description": "Địa điểm lý tưởng để mua sắm sản phẩm yêu thích của bạn.",

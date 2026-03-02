@@ -11,15 +11,13 @@ export default function IndexScreen() {
     const screens = [
         { title: "Login", path: "/login" },
         { title: "Register", path: "/register" },
-        { title: "Cart", path: "/cart" },
-        { title: "Profile", path: "/profile" },
+        { title: "Tabs (Home)", path: "/(tabs)" },
         { title: "Product Detail (Modal)", path: "/product-detail" },
-        { title: "Modal Example", path: "/modal" },
+        { title: "Settings", path: "/settings" },
+        { title: "Edit Profile", path: "/edit-profile" },
         { title: "Terms", path: "/terms" },
         { title: "Privacy Policy", path: "/privacy-policy" },
-        { title: "Tabs", path: "/(tabs)" },
         { title: "Posts List", path: "/posts" },
-        { title: "Search", path: "/search" },
     ];
 
 

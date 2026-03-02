@@ -2,10 +2,12 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
+import { useEffect } from 'react';
 
 // -- css
 import { ThemedView } from '../components/themed-view';
 // import { useCheckOnboarding } from '../hooks/useCheckOnboarding';
+import useAuth from '../stores/auth';
 import PopUp from '../components/popUp';
 import { LocaleProvider } from '../provider/localeProvider';
 import TanStackProvider from '../provider/tanStackProvider';
@@ -29,6 +31,14 @@ export const unstable_settings = {
 // });
 
 export default function RootLayout() {
+  const pathname = usePathname();
+  const isActiveHeader = pathname === '/(tabs)/settings' || pathname === '/';
+  const { fetchMe } = useAuth();
+
+  useEffect(() => {
+      fetchMe();
+  }, [fetchMe]);
+
   // Dev mode: comment để không auto-redirect
   // const checking = useCheckOnboarding();
   // if (checking) {
@@ -40,14 +50,8 @@ export default function RootLayout() {
       <TanStackProvider>
         <LocaleProvider>
           <ThemedView style={{ flex: 1 }} >
-            <Stack>
-              <Stack.Screen name="index" options={{ headerShown: false }} />
-              <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-              <Stack.Screen name="(public)" options={{ headerShown: false }} />
-              <Stack.Screen name="(user)" options={{ headerShown: false }} />
-              <Stack.Screen name="(modals)" options={{ headerShown: false }} />
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(modals)" options={{ presentation: 'modal' }} />
             </Stack>
             <StatusBar style={'dark'} />
             <PopUp />
