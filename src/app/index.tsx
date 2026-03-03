@@ -30,6 +30,8 @@ export default function IndexScreen() {
                     {screens.map((screen) => (
                         <Link key={screen.path} href={screen.path as any} asChild>
                             <Pressable 
+                                accessibilityRole="link"
+                                accessibilityLabel={`Navigate to ${screen.title}`}
                                 style={({ pressed }) => [
                                     styles.linkBtn,
                                     pressed && styles.linkBtnPressed
@@ -56,6 +58,8 @@ export default function IndexScreen() {
                         autoCapitalize="none"
                     />
                     <Pressable
+                        accessibilityRole="link"
+                        accessibilityLabel="Go to the specified dynamic page"
                         style={({ pressed }) => [
                             styles.goBtn,
                             pressed && styles.goBtnPressed
