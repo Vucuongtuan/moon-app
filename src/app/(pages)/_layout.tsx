@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router';
 
-export default function UserLayout() {
+export default function PagesLayout() {
   return (
     <Stack screenOptions={{ headerBackTitleVisible: false }}>
       <Stack.Screen
@@ -17,6 +17,13 @@ export default function UserLayout() {
           headerBackTitleVisible: false,
         }}
       />
+      <Stack.Screen
+        name="posts/[slug]"
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* Generic dynamic page route [slug] configuration is handled directly inside [slug].tsx via Stack.Screen, but we can declare it here implicitly or explicitly. By default it inherits from this layout. */}
     </Stack>
   );
 }
