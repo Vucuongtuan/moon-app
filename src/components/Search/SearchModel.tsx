@@ -22,7 +22,11 @@ export function SearchModal() {
 
     return (
         <>
-            <TouchableOpacity onPress={toggleModal}>
+            <TouchableOpacity
+                onPress={toggleModal}
+                accessibilityRole="button"
+                accessibilityLabel="Open search"
+            >
                 <Feather name="search" size={24} color={isDark ? 'white' : 'black'} />
             </TouchableOpacity>
             <Modal
@@ -35,7 +39,11 @@ export function SearchModal() {
                 <ThemedView style={{ flex: 1 }}>
                     <SafeAreaView style={{ flex: 1 }}>
                         <View style={[styles.headerCtn, isDark && styles.headerCtnDark]}>
-                            <TouchableOpacity onPress={toggleModal}>
+                            <TouchableOpacity
+                                onPress={toggleModal}
+                                accessibilityRole="button"
+                                accessibilityLabel="Close search"
+                            >
                                 <ThemedIcon name="arrow-back" size={24} color={isDark ? 'white' : 'black'} />
                             </TouchableOpacity>
                             <View style={styles.inputWrapperCtn}>
@@ -48,7 +56,11 @@ export function SearchModal() {
                                 />
                             </View>
                             {keyword.length > 0 && (
-                                <TouchableOpacity onPress={() => setKeyword("")}>
+                                <TouchableOpacity
+                                    onPress={() => setKeyword("")}
+                                    accessibilityRole="button"
+                                    accessibilityLabel="Clear search text"
+                                >
                                     <ThemedIcon name="close" size={20} color="gray" />
                                 </TouchableOpacity>
                             )}
