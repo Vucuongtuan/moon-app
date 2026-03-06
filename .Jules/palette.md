@@ -9,3 +9,7 @@
 ## 2025-03-01 - Ensure `accessibilityState` maps to `disabled` for Pressable buttons
 **Learning:** React Native's `<Pressable>` component does not automatically map the standard `disabled={true}` prop to the screen reader's accessibility state. A disabled button might still be perceived as active by a screen reader if the `accessibilityState={{ disabled: true }}` property is missing, leading to confusion.
 **Action:** When creating accessible interactive elements like custom Buttons relying on `<Pressable>`, explicitly map the component's `disabled` prop to `accessibilityState={{ disabled: props.disabled }}`.
+
+## 2025-03-06 - [Touchable Accessibility Roles]
+**Learning:** Native React elements like `TouchableOpacity` function as buttons but do not have an implicit `button` role like a web `<button>`. When used as interactive elements without `accessibilityRole="button"`, screen readers treat them as generic text/content.
+**Action:** When creating or modifying UI components that act as buttons (e.g. Search close, Language selection) with `TouchableOpacity` or `Pressable`, always ensure to add `accessibilityRole="button"` and an appropriate `accessibilityLabel`.

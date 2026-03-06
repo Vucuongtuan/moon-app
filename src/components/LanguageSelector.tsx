@@ -20,6 +20,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
         <View style={styles.container}>
             <TouchableOpacity
                 onPress={() => onSelectLanguage('vi')}
+                accessibilityRole="button"
+                accessibilityLabel="Select Vietnamese language"
                 style={[
                     styles.button,
                     selectedLanguage === 'vi'
@@ -36,6 +38,8 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
 
             <TouchableOpacity
                 onPress={() => onSelectLanguage('en')}
+                accessibilityRole="button"
+                accessibilityLabel="Select English language"
                 style={[
                     styles.button,
                     selectedLanguage === 'en'
