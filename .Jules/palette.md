@@ -9,3 +9,6 @@
 ## 2025-03-01 - Ensure `accessibilityState` maps to `disabled` for Pressable buttons
 **Learning:** React Native's `<Pressable>` component does not automatically map the standard `disabled={true}` prop to the screen reader's accessibility state. A disabled button might still be perceived as active by a screen reader if the `accessibilityState={{ disabled: true }}` property is missing, leading to confusion.
 **Action:** When creating accessible interactive elements like custom Buttons relying on `<Pressable>`, explicitly map the component's `disabled` prop to `accessibilityState={{ disabled: props.disabled }}`.
+## 2024-03-07 - Explicit Accessibility Labels for Implicit Actions
+**Learning:** Components wrapped in Expo Router's `<Link asChild>` (like `<Pressable>`) do not automatically convey their context or destination to screen readers, especially when they enclose complex child views or rely on visual context (e.g., "See more" adjacent to a heading).
+**Action:** Always add `accessibilityRole="link"` and a descriptive `accessibilityLabel` to the interactive element inside `<Link asChild>` to ensure screen readers explicitly announce the link's purpose and destination.

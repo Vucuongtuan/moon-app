@@ -24,7 +24,11 @@ export default function PostCard({data,type}:PostCardProps) {
         }}
         asChild
        >
-        <Pressable style={styles.ctn}>
+        <Pressable
+            style={styles.ctn}
+            accessibilityRole="link"
+            accessibilityLabel={`Read post: ${title || 'Untitled'}`}
+        >
             <View style={styles.contentCtn}>
                 <ThemedText type="h3">
                    {title || 'None'}
