@@ -33,7 +33,10 @@ export default function ProductArchiveBlock(props:MobileProductArchivesProps) {
             <ThemedText type="h2" style={style.title}>{isVN ? title : title_en}</ThemedText>
                 {linkURLTopic ? (
                     <Link href={linkURLTopic as any} asChild>
-                        <Pressable>
+                        <Pressable
+                            accessibilityRole="link"
+                            accessibilityLabel={isVN ? 'Xem thêm sản phẩm' : 'See more products'}
+                        >
                             <ThemedText style={style.seeMore}>{isVN ? 'Xem thêm' : 'See more'}</ThemedText>
                         </Pressable>
                     </Link>
