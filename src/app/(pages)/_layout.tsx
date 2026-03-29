@@ -1,22 +1,22 @@
 import { Stack } from 'expo-router';
 
-export default function UserLayout() {
+export default function PagesLayout() {
   return (
     <Stack screenOptions={{ headerBackTitleVisible: false }}>
+      <Stack.Screen name="[slug]" />
       <Stack.Screen
         name="edit-profile"
         options={{
           headerTitle: 'Edit Profile',
-          headerBackTitleVisible: false,
         }}
       />
       <Stack.Screen
         name="settings"
         options={{
           headerTitle: 'Settings',
-          headerBackTitleVisible: false,
         }}
       />
+      <Stack.Screen name="posts/[slug]" options={{ headerShown: false }} />
     </Stack>
   );
 }
